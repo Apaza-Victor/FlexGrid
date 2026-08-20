@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid - Playground Interactivo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand"><i class="bi bi-code-square"></i> FlexGrid</a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="flexbox.html"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="grid.html" class="active"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="patrones.html"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="conceptos.html"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="recursos.html"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="navbar-toggle" id="navToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge"><i class="bi bi-grid-3x3-gap"></i> CSS Grid Playground</div>
+      <h1>CSS Grid</h1>
+      <p>Controla columnas, filas, areas y la alineacion bidimensional de los items.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card-glass" id="section-grid">
+      <div class="card-body-custom">
+        <div class="controls-grid">
+          <div class="control-group">
+            <label>grid-template-columns</label>
+            <div class="option-pills" data-prop="gridTemplateColumns">
+              <span class="option-pill" data-value="repeat(2, 1fr)">2 cols</span>
+              <span class="option-pill active" data-value="repeat(3, 1fr)">3 cols</span>
+              <span class="option-pill" data-value="repeat(4, 1fr)">4 cols</span>
+              <span class="option-pill" data-value="1fr 2fr 1fr">1-2-1</span>
+              <span class="option-pill" data-value="2fr 1fr">2-1</span>
+              <span class="option-pill" data-value="repeat(3, minmax(100px, 1fr))">auto</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>grid-template-rows</label>
+            <div class="option-pills" data-prop="gridTemplateRows">
+              <span class="option-pill active" data-value="auto">auto</span>
+              <span class="option-pill" data-value="repeat(3, 100px)">3 rows fijas</span>
+              <span class="option-pill" data-value="100px 1fr 100px">1-2-1</span>
+              <span class="option-pill" data-value="repeat(3, 1fr)">3 equal</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>justify-items</label>
+            <div class="option-pills" data-prop="justifyItems">
+              <span class="option-pill active" data-value="stretch">stretch</span>
+              <span class="option-pill" data-value="start">start</span>
+              <span class="option-pill" data-value="end">end</span>
+              <span class="option-pill" data-value="center">center</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>align-items</label>
+            <div class="option-pills" data-prop="alignItems">
+              <span class="option-pill active" data-value="stretch">stretch</span>
+              <span class="option-pill" data-value="start">start</span>
+              <span class="option-pill" data-value="end">end</span>
+              <span class="option-pill" data-value="center">center</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>justify-content</label>
+            <div class="option-pills" data-prop="justifyContent">
+              <span class="option-pill active" data-value="stretch">stretch</span>
+              <span class="option-pill" data-value="start">start</span>
+              <span class="option-pill" data-value="end">end</span>
+              <span class="option-pill" data-value="center">center</span>
+              <span class="option-pill" data-value="space-between">space-between</span>
+              <span class="option-pill" data-value="space-around">space-around</span>
+              <span class="option-pill" data-value="space-evenly">space-evenly</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>grid-auto-flow</label>
+            <div class="option-pills" data-prop="gridAutoFlow">
+              <span class="option-pill active" data-value="row">row</span>
+              <span class="option-pill" data-value="column">column</span>
+              <span class="option-pill" data-value="dense">dense</span>
+              <span class="option-pill" data-value="row dense">row dense</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>grid-auto-rows</label>
+            <div class="option-pills" data-prop="gridAutoRows">
+              <span class="option-pill active" data-value="auto">auto</span>
+              <span class="option-pill" data-value="100px">100px</span>
+              <span class="option-pill" data-value="minmax(80px, auto)">minmax</span>
+              <span class="option-pill" data-value="1fr">1fr</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>gap (px)</label>
+            <input type="text" id="gridGap" value="10" placeholder="10">
+          </div>
+        </div>
+
+        <div class="playground-area" data-label="Container">
+          <div class="grid-playground" id="gridPlayground">
+            <div class="grid-item">1</div>
+            <div class="grid-item">2</div>
+            <div class="grid-item">3</div>
+            <div class="grid-item">4</div>
+            <div class="grid-item">5</div>
+            <div class="grid-item">6</div>
+            <div class="grid-item">7</div>
+            <div class="grid-item">8</div>
+            <div class="grid-item">9</div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header">
+            <span><i class="bi bi-code-slash"></i> CSS Generado</span>
+            <button class="copy-btn" data-target="gridCode"><i class="bi bi-clipboard"></i> Copiar</button>
+          </div>
+          <div class="code-body" id="gridCode"></div>
+        </div>
+
+        <!-- Deep Dive -->
+        <div class="deep-dive-section">
+          <h3 class="props-section-title"><i class="bi bi-book"></i> Profundiza en CSS Grid</h3>
+
+          <div class="deep-dive-card">
+            <h4>Unidades fr</h4>
+            <p>fr = fraccion del espacio disponible. Es como un flex-grow pero para grid. 1fr 2fr 1fr significa que la columna del medio ocupa el doble.</p>
+            <div class="code-snippet">
+              <span class="property">grid-template-columns</span>: <span class="value">1fr 2fr 1fr</span>;  <span class="comment">/* 25% - 50% - 25% */</span>
+              <span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>; <span class="comment">/* 3 columnas iguales */</span>
+            </div>
+            <div class="visual-example">
+              <div class="visual-row" style="display:grid; grid-template-columns:1fr 2fr 1fr; gap:6px;">
+                <div style="background:var(--accent-1); color:#fff; padding:10px; border-radius:8px; text-align:center; font-size:0.7rem;">1fr</div>
+                <div style="background:var(--accent-3); color:#fff; padding:10px; border-radius:8px; text-align:center; font-size:0.7rem;">2fr</div>
+                <div style="background:var(--accent-4); color:#fff; padding:10px; border-radius:8px; text-align:center; font-size:0.7rem;">1fr</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>minmax()</h4>
+            <p>Define un tamano minimo y maximo. Perfecto para grids responsive sin media queries.</p>
+            <div class="code-snippet">
+              <span class="property">grid-template-columns</span>: <span class="value">repeat(auto-fill, minmax(250px, 1fr))</span>;
+              <span class="comment">/* Columnas de min 250px, se ajustan solas */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>grid-template-areas</h4>
+            <p>Nombra las areas del grid con strings. Ideal para layouts complejos con nombre descriptivos.</p>
+            <div class="code-snippet">
+              <span class="selector">.container</span> {
+                <span class="property">grid-template-areas</span>:
+                  <span class="value">"header header header"</span>
+                  <span class="value">"sidebar main   main"</span>
+                  <span class="value">"footer footer footer"</span>;
+              }
+              <span class="selector">.header</span>  { <span class="property">grid-area</span>: <span class="value">header</span>; }
+              <span class="selector">.sidebar</span> { <span class="property">grid-area</span>: <span class="value">sidebar</span>; }
+              <span class="selector">.main</span>    { <span class="property">grid-area</span>: <span class="value">main</span>; }
+              <span class="selector">.footer</span>  { <span class="property">grid-area</span>: <span class="value">footer</span>; }
+            </div>
+            <div class="visual-example">
+              <div style="display:grid; grid-template-areas:'header header''sidebar main''footer footer'; grid-template-columns:1fr 2fr; gap:6px; font-size:0.7rem;">
+                <div style="grid-area:header; background:var(--accent-1); color:#fff; padding:12px; border-radius:8px; text-align:center;">header</div>
+                <div style="grid-area:sidebar; background:var(--accent-3); color:#fff; padding:12px; border-radius:8px; text-align:center;">sidebar</div>
+                <div style="grid-area:main; background:var(--accent-4); color:#fff; padding:12px; border-radius:8px; text-align:center;">main</div>
+                <div style="grid-area:footer; background:var(--accent-5); color:#fff; padding:12px; border-radius:8px; text-align:center;">footer</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>grid-auto-flow</h4>
+            <p>Controla como se colocan los items automaticamente. row (defecto), column, o dense (rellena huecos).</p>
+            <div class="code-snippet">
+              <span class="property">grid-auto-flow</span>: <span class="value">dense</span>;  <span class="comment">/* Rellena huecos automaticamente */</span>
+              <span class="property">grid-auto-flow</span>: <span class="value">column</span>; <span class="comment">/* Llena por columnas en vez de filas */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>grid-column / grid-row</h4>
+            <p>Hace que un item ocupe multiples celdas. span N = ocupa N celdas.</p>
+            <div class="code-snippet">
+              <span class="selector">.item-1</span> {
+                <span class="property">grid-column</span>: <span class="value">1 / 3</span>;    <span class="comment">/* De la linea 1 a la 3 (2 columnas) */</span>
+                <span class="property">grid-row</span>: <span class="value">span 2</span>;      <span class="comment">/* Ocupa 2 filas */</span>
+              }
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Grid vs Flexbox - Cuando usar cada uno</h4>
+            <p><strong>Flexbox</strong> = un eje (fila O columna). <strong>Grid</strong> = dos ejes (fila Y columna). Usa Grid para layouts de pagina, Flexbox para componentes.</p>
+            <div class="code-snippet">
+              <span class="comment">/* Flexbox: una fila de botones */</span>
+              <span class="selector">.navbar</span> { <span class="property">display</span>: <span class="value">flex</span>; <span class="property">gap</span>: <span class="value">8px</span>; }
+
+              <span class="comment">/* Grid: layout de pagina completo */</span>
+              <span class="selector">.page</span> {
+                <span class="property">display</span>: <span class="value">grid</span>;
+                <span class="property">grid-template-columns</span>: <span class="value">250px 1fr</span>;
+                <span class="property">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3 class="props-section-title"><i class="bi bi-lightbulb"></i> Resumen Rapido</h3>
+          <div class="info-grid">
+            <div class="info-card"><h4>grid-template-columns</h4><p>Define las columnas con fr, px, %, minmax() o repeat().</p></div>
+            <div class="info-card"><h4>grid-template-rows</h4><p>Define las filas. Puede ser auto, fr o valores fijos.</p></div>
+            <div class="info-card"><h4>justify-items</h4><p>Alinea items horizontalmente dentro de su celda.</p></div>
+            <div class="info-card"><h4>align-items</h4><p>Alinea items verticalmente dentro de su celda.</p></div>
+            <div class="info-card"><h4>justify-content</h4><p>Alinea toda la grilla dentro del container.</p></div>
+            <div class="info-card"><h4>grid-auto-flow</h4><p>Controla como se colocan items automaticamente.</p></div>
+            <div class="info-card"><h4>grid-auto-rows</h4><p>Altura por defecto de las filas generadas automaticamente.</p></div>
+            <div class="info-card"><h4>gap</h4><p>Espacio entre columnas y filas. Reemplaza margins.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><p>Construido para aprender. Modifica, experimenta y domina Flexbox & Grid.</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/playground.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

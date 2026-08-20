@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conceptos CSS - Fundamentos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .concept-intro {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .concept-intro strong { color: var(--accent-2); }
+
+    .deep-dive-section { margin-top: 36px; }
+    .deep-dive-section .deep-dive-card + .deep-dive-card { margin-top: 20px; }
+
+    .deep-dive-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    .deep-dive-card:hover {
+      border-color: var(--accent-1);
+      box-shadow: var(--shadow-glow);
+    }
+    .deep-dive-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+    }
+    .deep-dive-card > p,
+    .deep-dive-card > ul {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .deep-dive-card > ul { padding-left: 18px; }
+    .deep-dive-card > ul li { margin-bottom: 4px; }
+
+    .code-snippet {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.8;
+      overflow-x: auto;
+      white-space: pre;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+    .code-snippet .comment { color: var(--text-muted); font-style: italic; }
+
+    .visual-example {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .visual-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .props-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: 36px;
+    }
+    .props-section-title:first-child { margin-top: 0; }
+    .props-section-title i { color: var(--accent-1); font-size: 1.2rem; }
+
+    .concept-separator {
+      border: none;
+      border-top: 1px solid var(--border-glass);
+      margin: 48px 0;
+    }
+
+    .concept-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .concept-nav a {
+      padding: 8px 16px;
+      border: 1px solid var(--border-glass);
+      border-radius: 50px;
+      background: var(--bg-glass);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .concept-nav a:hover {
+      border-color: var(--accent-1);
+      color: var(--text-primary);
+      background: rgba(108, 92, 231, 0.1);
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.8rem;
+    }
+    .spec-table th,
+    .spec-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--border-glass);
+      text-align: left;
+    }
+    .spec-table th {
+      background: rgba(108, 92, 231, 0.12);
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .spec-table td {
+      color: var(--text-secondary);
+    }
+    .spec-table td code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--accent-5);
+    }
+    .spec-table tr:hover td {
+      background: rgba(108, 92, 231, 0.04);
+    }
+
+    .box-model-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: 10px auto;
+      max-width: 360px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+    }
+    .bm-margin {
+      background: rgba(253, 121, 168, 0.12);
+      border: 2px dashed var(--accent-3);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      color: var(--accent-3);
+    }
+    .bm-border {
+      background: rgba(253, 203, 110, 0.15);
+      border: 2px solid var(--accent-5);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      color: var(--accent-5);
+    }
+    .bm-padding {
+      background: rgba(0, 206, 201, 0.15);
+      border: 2px dotted var(--accent-4);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      color: var(--accent-4);
+    }
+    .bm-content {
+      background: rgba(108, 92, 231, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .display-demo {
+      border: 2px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 10px;
+      background: rgba(0,0,0,0.1);
+    }
+    .display-demo-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-4);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pos-rel-demo {
+      position: relative;
+      background: rgba(108, 92, 231, 0.06);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      padding: 30px;
+      min-height: 100px;
+    }
+    .pos-abs-demo {
+      position: absolute;
+      background: var(--accent-3);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .specificity-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .spec-level {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      min-width: 140px;
+      text-align: center;
+    }
+    .spec-score {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .query-demo-box {
+      border: 2px dashed var(--accent-1);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: rgba(108, 92, 231, 0.04);
+    }
+    .query-demo-box .current-bp {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-5);
+      font-weight: 600;
+    }
+
+    .var-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .var-swatch {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .selector-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      background: var(--bg-glass);
+      transition: all 0.3s ease;
+    }
+    .selector-card:hover {
+      border-color: var(--accent-1);
+    }
+    .selector-card code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent-5);
+      font-weight: 600;
+      min-width: 120px;
+    }
+    .selector-card span {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .pos-sticky-demo {
+      height: 160px;
+      overflow-y: auto;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      background: rgba(0,0,0,0.1);
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: var(--accent-1);
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+    .sticky-content {
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand"><i class="bi bi-code-square"></i> FlexGrid</a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="flexbox.html"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="grid.html"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="patrones.html"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="conceptos.html" class="active"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="recursos.html"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="navbar-toggle" id="navToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge"><i class="bi bi-journal-bookmark-fill"></i> CSS Fundamentals</div>
+      <h1>Conceptos CSS</h1>
+      <p>Los pilares fundamentales que necesitas dominar antes deFlexbox y Grid. Cada concepto con ejemplos visuales y codigo real.</p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <div class="concept-nav">
+      <a href="#box-model"><i class="bi bi-box"></i> Box Model</a>
+      <a href="#display"><i class="bi bi-eye"></i> Display</a>
+      <a href="#position"><i class="bi bi-crosshair"></i> Position</a>
+      <a href="#specificity"><i class="bi bi-sort-numeric-down"></i> Specificity</a>
+      <a href="#unidades"><i class="bi bi-rulers"></i> Unidades</a>
+      <a href="#selectores"><i class="bi bi-tags-fill"></i> Selectores</a>
+      <a href="#media-queries"><i class="bi bi-phone"></i> Media Queries</a>
+      <a href="#variables-css"><i class="bi bi-palette"></i> Variables CSS</a>
+    </div>
+
+    <!-- ==========================================
+         1. BOX MODEL
+         ========================================== -->
+    <div class="card-glass" id="box-model">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-box"></i> 1. Box Model</h3>
+        <p class="concept-intro">
+          Todo elemento HTML es una caja rectangular compuesta por 4 zonas: <strong>content</strong> (contenido real),
+          <strong>padding</strong> (espacio interno), <strong>border</strong> (borde) y <strong>margin</strong> (espacio externo).
+          Entender esto es esencial para controlar espaciados y tamanos en CSS.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">Zonas del Box Model</div>
+          <div class="box-model-visual">
+            <div class="bm-margin">
+              MARGIN (20px)
+              <div class="bm-border">
+                BORDER (4px)
+                <div class="bm-padding">
+                  PADDING (16px)
+                  <div class="bm-content">
+                    CONTENT
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <h3 class="props-section-title"><i class="bi bi-book"></i> box-sizing: border-box vs content-box</h3>
+
+          <div class="deep-dive-card">
+            <h4>content-box (por defecto)</h4>
+            <p>El width y height solo miden el contenido. El padding y border se suman al tamano total.</p>
+            <div class="code-snippet">
+<span class="selector">.caja</span> {
+  <span class="property">box-sizing</span>: <span class="value">content-box</span>;
+  <span class="property">width</span>: <span class="value">200px</span>;
+  <span class="property">padding</span>: <span class="value">16px</span>;
+  <span class="property">border</span>: <span class="value">4px solid</span>;
+  <span class="comment">/* Tamano total real: 200 + 16*2 + 4*2 = 240px */</span>
+}
+            </div>
+            <div class="visual-example">
+              <div class="visual-row">
+                <div style="width:200px; padding:16px; border:4px solid var(--accent-3); background:rgba(253,121,168,0.15); border-radius:8px; font-size:0.72rem; font-family:'JetBrains Mono',monospace; color:var(--accent-3);">
+                  width: 200px<br>Tamano real: 240px
+                </div>
+                <span style="font-size:0.7rem; color:var(--text-muted);">|-- 200px --|-- 40px --|--&gt;</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>border-box (recomendado)</h4>
+            <p>El width y height incluyen padding y border. Lo que defines es exactamente lo que obtienes.</p>
+            <div class="code-snippet">
+<span class="selector">.caja</span> {
+  <span class="property">box-sizing</span>: <span class="value">border-box</span>;
+  <span class="property">width</span>: <span class="value">200px</span>;
+  <span class="property">padding</span>: <span class="value">16px</span>;
+  <span class="property">border</span>: <span class="value">4px solid</span>;
+  <span class="comment">/* Tamano total real: 200px (content se ajusta) */</span>
+}
+            </div>
+            <div class="visual-example">
+              <div class="visual-row">
+                <div style="width:200px; padding:16px; border:4px solid var(--accent-4); background:rgba(0,206,201,0.15); border-radius:8px; font-size:0.72rem; font-family:'JetBrains Mono',monospace; color:var(--accent-4); box-sizing:border-box;">
+                  width: 200px<br>Tamano real: 200px
+                </div>
+                <span style="font-size:0.7rem; color:var(--text-muted);">|------- 200px -------|</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Reset global (buena practica)</h4>
+            <div class="code-snippet">
+<span class="selector">*, *::before, *::after</span> {
+  <span class="property">box-sizing</span>: <span class="value">border-box</span>;
+}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         2. DISPLAY
+         ========================================== -->
+    <div class="card-glass" id="display">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-eye"></i> 2. Display</h3>
+        <p class="concept-intro">
+          La propiedad <strong>display</strong> define como un elemento se comporta en el layout. Es la propiedad CSS mas fundamental:
+          controla si un elemento ocupa toda la linea, se coloca en linea con otros, o no se muestra.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">block</div>
+          <div class="display-demo">
+            <div style="background:rgba(108,92,231,0.2); padding:10px; border-radius:8px; margin-bottom:6px; font-size:0.75rem; color:var(--accent-2); font-family:'JetBrains Mono',monospace;">
+              &lt;div&gt; Bloque 1 - Ocupa 100%
+            </div>
+            <div style="background:rgba(253,121,168,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-3); font-family:'JetBrains Mono',monospace;">
+              &lt;div&gt; Bloque 2 - Salta de linea
+            </div>
+          </div>
+
+          <div class="display-demo-label">inline</div>
+          <div class="display-demo">
+            <span style="background:rgba(0,206,201,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-4); font-family:'JetBrains Mono',monospace;">
+              &lt;span&gt; Inline 1
+            </span>
+            <span style="background:rgba(253,203,110,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-5); font-family:'JetBrains Mono',monospace;">
+              &lt;span&gt; Inline 2
+            </span>
+            <span style="background:rgba(108,92,231,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-2); font-family:'JetBrains Mono',monospace;">
+              &lt;span&gt; Inline 3 - Se colocan en linea
+            </span>
+          </div>
+
+          <div class="display-demo-label">inline-block</div>
+          <div class="display-demo">
+            <div style="display:inline-block; background:rgba(108,92,231,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-2); font-family:'JetBrains Mono',monospace; width:120px; text-align:center;">
+              inline-block 1
+            </div>
+            <div style="display:inline-block; background:rgba(253,121,168,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-3); font-family:'JetBrains Mono',monospace; width:120px; text-align:center;">
+              inline-block 2
+            </div>
+            <div style="display:inline-block; background:rgba(0,206,201,0.2); padding:10px; border-radius:8px; font-size:0.75rem; color:var(--accent-4); font-family:'JetBrains Mono',monospace; width:120px; text-align:center;">
+              inline-block 3
+            </div>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Tabla comparativa</h4>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Valor</th>
+                  <th>Ocupa linea</th>
+                  <th>Width / Height</th>
+                  <th>Margin vertical</th>
+                  <th>Ejemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>block</code></td>
+                  <td>Si, toda la linea</td>
+                  <td>Si, funciona</td>
+                  <td>Si</td>
+                  <td>div, h1, p</td>
+                </tr>
+                <tr>
+                  <td><code>inline</code></td>
+                  <td>No, fluye en texto</td>
+                  <td>No funciona</td>
+                  <td>No (solo horizontal)</td>
+                  <td>span, a, strong</td>
+                </tr>
+                <tr>
+                  <td><code>inline-block</code></td>
+                  <td>No, fluye en texto</td>
+                  <td>Si, funciona</td>
+                  <td>Si</td>
+                  <td>button, input</td>
+                </tr>
+                <tr>
+                  <td><code>none</code></td>
+                  <td>No se renderiza</td>
+                  <td>No</td>
+                  <td>No</td>
+                  <td>ocultar elementos</td>
+                </tr>
+                <tr>
+                  <td><code>flex</code></td>
+                  <td>Si, crea flex container</td>
+                  <td>En items</td>
+                  <td>En container</td>
+                  <td>layout moderno</td>
+                </tr>
+                <tr>
+                  <td><code>grid</code></td>
+                  <td>Si, crea grid container</td>
+                  <td>En items</td>
+                  <td>En container</td>
+                  <td>layout 2D</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Codigo de ejemplo</h4>
+            <div class="code-snippet">
+<span class="selector">.bloque</span> {
+  <span class="property">display</span>: <span class="value">block</span>;
+  <span class="property">width</span>: <span class="value">100%</span>;       <span class="comment">/* Ocupa todo el ancho */</span>
+}
+
+<span class="selector">.en-linea</span> {
+  <span class="property">display</span>: <span class="value">inline</span>;
+  <span class="property">width</span>: <span class="value">200px</span>;      <span class="comment">/* IGNORADO */</span>
+  <span class="property">height</span>: <span class="value">100px</span>;     <span class="comment">/* IGNORADO */</span>
+}
+
+<span class="selector">.bloque-en-linea</span> {
+  <span class="property">display</span>: <span class="value">inline-block</span>;
+  <span class="property">width</span>: <span class="value">200px</span>;     <span class="comment">/* Funciona */</span>
+  <span class="property">height</span>: <span class="value">100px</span>;    <span class="comment">/* Funciona */</span>
+}
+
+<span class="selector">.oculto</span> {
+  <span class="property">display</span>: <span class="value">none</span>;     <span class="comment">/* Desaparece del layout */</span>
+}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         3. POSITION
+         ========================================== -->
+    <div class="card-glass" id="position">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-crosshair"></i> 3. Position</h3>
+        <p class="concept-intro">
+          <strong>position</strong> determina como un elemento se posiciona en la pagina. Las propiedades
+          <strong>top</strong>, <strong>right</strong>, <strong>bottom</strong> y <strong>left</strong> controlan el desplazamiento
+          segun el tipo de posicionamiento elegido.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">relative + absolute</div>
+          <div class="pos-rel-demo">
+            <span style="font-size:0.72rem; color:var(--text-muted); font-family:'JetBrains Mono',monospace; position:relative; z-index:1;">position: relative (padre)</span>
+            <div class="pos-abs-demo" style="top:10px; right:10px; background:var(--accent-1);">top: 10px; right: 10px</div>
+            <div class="pos-abs-demo" style="bottom:10px; left:10px; background:var(--accent-4);">bottom: 10px; left: 10px</div>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Tipos de posicionamiento</h4>
+            <div class="code-snippet">
+<span class="comment">/* 1. STATIC - Flujo normal, default */</span>
+<span class="selector">.elemento</span> {
+  <span class="property">position</span>: <span class="value">static</span>;
+  <span class="comment">/* top/right/bottom/left NO tienen efecto */</span>
+}
+
+<span class="comment">/* 2. RELATIVE - Se mueve desde su posicion original */</span>
+<span class="selector">.elemento</span> {
+  <span class="property">position</span>: <span class="value">relative</span>;
+  <span class="property">top</span>: <span class="value">10px</span>;    <span class="comment">/* Se baja 10px */</span>
+  <span class="property">left</span>: <span class="value">20px</span>;   <span class="comment">/* Se mueve 20px a la derecha */</span>
+}
+
+<span class="comment">/* 3. ABSOLUTE - Se posiciona respecto al padre con position */</span>
+<span class="selector">.padre</span> { <span class="property">position</span>: <span class="value">relative</span>; }
+<span class="selector">.hijo</span> {
+  <span class="property">position</span>: <span class="value">absolute</span>;
+  <span class="property">top</span>: <span class="value">0</span>;
+  <span class="property">right</span>: <span class="value">0</span>;
+}
+
+<span class="comment">/* 4. FIXED - Se pega al viewport, no scrollea */</span>
+<span class="selector">.navbar</span> {
+  <span class="property">position</span>: <span class="value">fixed</span>;
+  <span class="property">top</span>: <span class="value">0</span>;
+  <span class="property">left</span>: <span class="value">0</span>;
+  <span class="property">right</span>: <span class="value">0</span>;
+}
+
+<span class="comment">/* 5. STICKY - Se pega al scroll */</span>
+<span class="selector">.header</span> {
+  <span class="property">position</span>: <span class="value">sticky</span>;
+  <span class="property">top</span>: <span class="value">0</span>;
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>sticky en accion</h4>
+            <p>El encabezado se queda fijo mientras scrolleas el contenido:</p>
+            <div class="pos-sticky-demo">
+              <div class="sticky-header">
+                <i class="bi bi-pin-fill"></i> position: sticky; top: 0;
+              </div>
+              <div class="sticky-content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                <br><br>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <br><br>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br><br>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                <br><br>
+                Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Tabla comparativa</h4>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Valor</th>
+                  <th>Flujo</th>
+                  <th>Offset</th>
+                  <th>Scroll</th>
+                  <th>Caso de uso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>static</code></td>
+                  <td>Normal</td>
+                  <td>No</td>
+                  <td>Mueve</td>
+                  <td>Default, sin posicionamiento</td>
+                </tr>
+                <tr>
+                  <td><code>relative</code></td>
+                  <td>Reserva espacio</td>
+                  <td>Si</td>
+                  <td>Mueve</td>
+                  <td>Contenedor para absolute</td>
+                </tr>
+                <tr>
+                  <td><code>absolute</code></td>
+                  <td>Sin reserva</td>
+                  <td>Si (al padre)</td>
+                  <td>Mueve</td>
+                  <td>Tooltips, overlays, badges</td>
+                </tr>
+                <tr>
+                  <td><code>fixed</code></td>
+                  <td>Sin reserva</td>
+                  <td>Si (al viewport)</td>
+                  <td>Fijo</td>
+                  <td>Navbars, botones flotantes</td>
+                </tr>
+                <tr>
+                  <td><code>sticky</code></td>
+                  <td>Normal hasta trigger</td>
+                  <td>Si</td>
+                  <td>Fijo al scrollear</td>
+                  <td>Headers de tabla, sidebar</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         4. SPECIFICITY
+         ========================================== -->
+    <div class="card-glass" id="specificity">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-sort-numeric-down"></i> 4. Specificity</h3>
+        <p class="concept-intro">
+          La <strong>especificidad</strong> determina que regla CSS gana cuando varias apuntan al mismo elemento.
+          Es un sistema de puntuacion: cuanto mas especifico sea el selector, mayor sera su prioridad.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">Jerarquia de especificidad (mayor a menor)</div>
+          <div class="specificity-bar">
+            <div class="spec-level" style="background:var(--accent-3);">!important</div>
+            <span class="spec-score">Infinita (evitar)</span>
+          </div>
+          <div class="specificity-bar">
+            <div class="spec-level" style="background:var(--accent-1);">Inline styles</div>
+            <span class="spec-score">1,0,0,0</span>
+          </div>
+          <div class="specificity-bar">
+            <div class="spec-level" style="background:var(--accent-4);">#id selector</div>
+            <span class="spec-score">0,1,0,0</span>
+          </div>
+          <div class="specificity-bar">
+            <div class="spec-level" style="background:var(--accent-5);">.class / [attr]</div>
+            <span class="spec-score">0,0,1,0</span>
+          </div>
+          <div class="specificity-bar">
+            <div class="spec-level" style="background:var(--text-muted);">element / ::pseudo</div>
+            <span class="spec-score">0,0,0,1</span>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>La batalla de la especificidad</h4>
+            <div class="code-snippet">
+<span class="comment">/* Puntuacion: 0,0,0,1 */</span>
+<span class="selector">p</span> { <span class="property">color</span>: <span class="value">blue</span>; }
+
+<span class="comment">/* Puntuacion: 0,0,1,0 - GANA */</span>
+<span class="selector">.texto</span> { <span class="property">color</span>: <span class="value">red</span>; }
+
+<span class="comment">/* Puntuacion: 0,1,0,0 - GANA */</span>
+<span class="selector">#titulo</span> { <span class="property">color</span>: <span class="value">green</span>; }
+
+<span class="comment">/* Puntuacion: 0,1,1,1 - GANA (gana por ser mas especifico) */</span>
+<span class="selector">#titulo .texto p</span> { <span class="property">color</span>: <span class="value">purple</span>; }
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Spec de ejemplo - resuelto</h4>
+            <div class="code-snippet">
+<span class="comment">/* 1. Especificidad: 0,0,0,1 */</span>
+<span class="selector">p</span> { <span class="property">color</span>: <span class="value">gray</span>; }
+
+<span class="comment">/* 2. Especificidad: 0,0,1,0 - Ganador #1 */</span>
+<span class="selector">.parrafo</span> { <span class="property">color</span>: <span class="value">blue</span>; }
+
+<span class="comment">/* 3. Especificidad: 0,0,1,1 - Ganador #2 */</span>
+<span class="selector">p.parrafo</span> { <span class="property">color</span>: <span class="value">green</span>; }
+
+<span class="comment">/* 4. Especificidad: 0,0,2,0 - Ganador FINAL */</span>
+<span class="selector">.parrafo.texto</span> { <span class="property">color</span>: <span class="value">red</span>; }
+            </div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:8px;">
+              Resultado: el parrafo sera <span style="color:var(--accent-3); font-weight:600;">rojo</span> porque tiene la mayor especificidad (0,0,2,0).
+            </p>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Buena practica</h4>
+            <ul>
+              <li>Evita <code>!important</code> - es el ultimo recurso</li>
+              <li>Evita selectores IDs para estilos reutilizables</li>
+              <li>Usa clases CSS - balance perfecto de especificidad</li>
+              <li>Mainten la especificidad baja y consistente</li>
+              <li>CSS custom properties (variables) ayudan a reducir specificity wars</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         5. UNIDADES
+         ========================================== -->
+    <div class="card-glass" id="unidades">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-rulers"></i> 5. Unidades</h3>
+        <p class="concept-intro">
+          Las <strong>unidades CSS</strong> definen tamanos, espaciados y posiciones. Elegir la unidad correcta es clave
+          para crear layouts responsivos y mantenibles.
+        </p>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Tabla de unidades</h4>
+            <div style="overflow-x:auto;">
+              <table class="spec-table">
+                <thead>
+                  <tr>
+                    <th>Unidad</th>
+                    <th>Tipo</th>
+                    <th>Basada en</th>
+                    <th>Cuando usar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>px</code></td>
+                    <td>Absoluta</td>
+                    <td>Pantalla</td>
+                    <td>Borders, sombras, tamanos fijos</td>
+                  </tr>
+                  <tr>
+                    <td><code>%</code></td>
+                    <td>Relativa</td>
+                    <td>Elemento padre</td>
+                    <td>Widths fluidos, layouts</td>
+                  </tr>
+                  <tr>
+                    <td><code>em</code></td>
+                    <td>Relativa</td>
+                    <td>Font-size del padre</td>
+                    <td>Padding/margin contextual, tipografia</td>
+                  </tr>
+                  <tr>
+                    <td><code>rem</code></td>
+                    <td>Relativa</td>
+                    <td>Font-size raiz (html)</td>
+                    <td>Tipografia, spacing global</td>
+                  </tr>
+                  <tr>
+                    <td><code>vw</code></td>
+                    <td>Relativa</td>
+                    <td>1% del viewport width</td>
+                    <td>Full-width, hero sections</td>
+                  </tr>
+                  <tr>
+                    <td><code>vh</code></td>
+                    <td>Relativa</td>
+                    <td>1% del viewport height</td>
+                    <td>Full-height, hero sections</td>
+                  </tr>
+                  <tr>
+                    <td><code>fr</code></td>
+                    <td>Relativa</td>
+                    <td>Espacio disponible en Grid</td>
+                    <td>Grid template columns/rows</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Codigo de ejemplo</h4>
+            <div class="code-snippet">
+<span class="comment">/* Unidades absolutas */</span>
+<span class="selector">.border</span> {
+  <span class="property">border</span>: <span class="value">2px solid</span>;
+  <span class="property">box-shadow</span>: <span class="value">0 4px 12px rgba(0,0,0,0.3)</span>;
+}
+
+<span class="comment">/* Porcentajes - relativo al padre */</span>
+<span class="selector">.hijo</span> {
+  <span class="property">width</span>: <span class="value">50%</span>;       <span class="comment">/* Mitad del padre */</span>
+  <span class="property">margin-left</span>: <span class="value">10%</span>; <span class="comment">/* 10% del padre */</span>
+}
+
+<span class="comment">/* em - relativo al font-size del padre */</span>
+<span class="selector">.padre</span> { <span class="property">font-size</span>: <span class="value">16px</span>; }
+<span class="selector">.hijo</span> {
+  <span class="property">font-size</span>: <span class="value">1.5em</span>;    <span class="comment">/* = 24px */</span>
+  <span class="property">padding</span>: <span class="value">1em</span>;        <span class="comment">/* = 24px */</span>
+}
+
+<span class="comment">/* rem - relativo al font-size raiz */</span>
+<span class="selector">html</span> { <span class="property">font-size</span>: <span class="value">16px</span>; }
+<span class="selector">.titulo</span> {
+  <span class="property">font-size</span>: <span class="value">2rem</span>;     <span class="comment">/* = 32px siempre */</span>
+  <span class="property">margin-bottom</span>: <span class="value">1rem</span>; <span class="comment">/* = 16px siempre */</span>
+}
+
+<span class="comment">/* vw / vh - relativo al viewport */</span>
+<span class="selector">.hero</span> {
+  <span class="property">min-height</span>: <span class="value">100vh</span>;  <span class="comment">/* Pantalla completa */</span>
+  <span class="property">font-size</span>: <span class="value">5vw</span>;      <span class="comment">/* Se escala con pantalla */</span>
+}
+
+<span class="comment">/* fr - fracciones en Grid */</span>
+<span class="selector">.grid</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">1fr 2fr 1fr</span>; <span class="comment">/* 1:2:1 */</span>
+}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         6. SELECTORES
+         ========================================== -->
+    <div class="card-glass" id="selectores">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-tags-fill"></i> 6. Selectores</h3>
+        <p class="concept-intro">
+          Los <strong>selectores CSS</strong> determinan a que elementos se aplican las reglas de estilo.
+          Dominarlos te permite escribir CSS mas preciso, mantenible y eficiente.
+        </p>
+
+        <div class="visual-example">
+          <div class="selector-card">
+            <code>p</code>
+            <span>Elemento / tag - Selecciona todos los &lt;p&gt;</span>
+          </div>
+          <div class="selector-card">
+            <code>.clase</code>
+            <span>Clase - Selecciona elementos con class="clase"</span>
+          </div>
+          <div class="selector-card">
+            <code>#id</code>
+            <span>ID - Selecciona el elemento con id="id" (unico)</span>
+          </div>
+          <div class="selector-card">
+            <code>[attr]</code>
+            <span>Atributo - Selecciona por atributo HTML</span>
+          </div>
+          <div class="selector-card">
+            <code>*:hover</code>
+            <span>Pseudo-clase - Estado interactivo</span>
+          </div>
+          <div class="selector-card">
+            <code>::before</code>
+            <span>Pseudo-elemento - Contenido generado</span>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Selectores basicos</h4>
+            <div class="code-snippet">
+<span class="comment">/* Por tag */</span>
+<span class="selector">h1</span> { <span class="property">color</span>: <span class="value">blue</span>; }
+<span class="selector">p</span> { <span class="property">font-size</span>: <span class="value">16px</span>; }
+
+<span class="comment">/* Por clase */</span>
+<span class="selector">.card</span> { <span class="property">border</span>: <span class="value">1px solid #ddd</span>; }
+<span class="selector">.highlight</span> { <span class="property">background</span>: <span class="value">yellow</span>; }
+
+<span class="comment">/* Por ID */</span>
+<span class="selector">#header</span> { <span class="property">position</span>: <span class="value">fixed</span>; }
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Selectores combinadores</h4>
+            <div class="code-snippet">
+<span class="comment">/* Descendiente (todos los hijos) */</span>
+<span class="selector">.nav a</span> { <span class="property">color</span>: <span class="value">white</span>; }
+
+<span class="comment">/* Hijo directo (solo el nivel 1) */</span>
+<span class="selector">.nav > a</span> { <span class="property">padding</span>: <span class="value">10px</span>; }
+
+<span class="comment">/* Hermano adyacente (el siguiente) */</span>
+<span class="selector">h2 + p</span> { <span class="property">margin-top</span>: <span class="value">0</span>; }
+
+<span class="comment">/* Hermanos generales (todos los que siguen) */</span>
+<span class="selector">h2 ~ p</span> { <span class="property">color</span>: <span class="value">gray</span>; }
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Selectores de atributo</h4>
+            <div class="code-snippet">
+<span class="comment">/* Contiene el valor */</span>
+<span class="selector">[class*="btn"]</span> { <span class="property">cursor</span>: <span class="value">pointer</span>; }
+
+<span class="comment">/* Empieza con */</span>
+<span class="selector">[href^="https"]</span> { <span class="property">color</span>: <span class="value">green</span>; }
+
+<span class="comment">/* Termina con */</span>
+<span class="selector">[href$=".pdf"]</span> { <span class="property">color</span>: <span class="value">red</span>; }
+
+<span class="comment">/* Valor exacto */</span>
+<span class="selector">[type="email"]</span> { <span class="property">border</span>: <span class="value">2px solid blue</span>; }
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Pseudo-clases y pseudo-elementos</h4>
+            <div class="code-snippet">
+<span class="comment">/* Pseudo-clases (estados) */</span>
+<span class="selector">a:hover</span> { <span class="property">color</span>: <span class="value">var(--accent-1)</span>; }
+<span class="selector">a:active</span> { <span class="property">transform</span>: <span class="value">scale(0.98)</span>; }
+<span class="selector">input:focus</span> { <span class="property">outline</span>: <span class="value">2px solid var(--accent-1)</span>; }
+<span class="selector">li:first-child</span> { <span class="property">font-weight</span>: <span class="value">bold</span>; }
+<span class="selector">li:last-child</span> { <span class="property">border-bottom</span>: <span class="value">none</span>; }
+<span class="selector">li:nth-child(odd)</span> { <span class="property">background</span>: <span class="value">rgba(0,0,0,0.05)</span>; }
+
+<span class="comment">/* Pseudo-elementos (contenido) */</span>
+<span class="selector">p::before</span> {
+  <span class="property">content</span>: <span class="value">"&#128204; "</span>;
+}
+<span class="selector">p::after</span> {
+  <span class="property">content</span>: <span class="value">"."</span>;
+  <span class="property">color</span>: <span class="value">red</span>;
+}
+<span class="selector">::selection</span> {
+  <span class="property">background</span>: <span class="value">var(--accent-1)</span>;
+  <span class="property">color</span>: <span class="value">#fff</span>;
+}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         7. MEDIA QUERIES
+         ========================================== -->
+    <div class="card-glass" id="media-queries">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-phone"></i> 7. Media Queries</h3>
+        <p class="concept-intro">
+          Las <strong>media queries</strong> permiten aplicar estilos diferentes segun las caracteristicas del dispositivo
+          (ancho, alto, orientacion, densidad de pixels). Son la base del <strong>diseño responsivo</strong>.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">Breakpoints comunes</div>
+          <div style="display:flex; flex-direction:column; gap:6px; font-size:0.75rem; font-family:'JetBrains Mono',monospace;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="min-width:100px; color:var(--accent-4);">360px - 480px</span>
+              <div style="flex:1; height:8px; background:linear-gradient(90deg, var(--accent-4), transparent); border-radius:4px;"></div>
+              <span style="color:var(--text-muted);">Mobile pequeno</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="min-width:100px; color:var(--accent-5);">480px - 768px</span>
+              <div style="flex:1; height:8px; background:linear-gradient(90deg, var(--accent-5), transparent); border-radius:4px;"></div>
+              <span style="color:var(--text-muted);">Mobile grande</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="min-width:100px; color:var(--accent-3);">768px - 1024px</span>
+              <div style="flex:1; height:8px; background:linear-gradient(90deg, var(--accent-3), transparent); border-radius:4px;"></div>
+              <span style="color:var(--text-muted);">Tablet</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="min-width:100px; color:var(--accent-1);">1024px - 1200px</span>
+              <div style="flex:1; height:8px; background:linear-gradient(90deg, var(--accent-1), transparent); border-radius:4px;"></div>
+              <span style="color:var(--text-muted);">Desktop</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="min-width:100px; color:var(--accent-2);">1200px+</span>
+              <div style="flex:1; height:8px; background:linear-gradient(90deg, var(--accent-2), transparent); border-radius:4px;"></div>
+              <span style="color:var(--text-muted);">Desktop grande</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Sintaxis basica</h4>
+            <div class="code-snippet">
+<span class="comment">/* Sintaxis */</span>
+<span class="selector">@media</span> (<span class="property">condicion</span>: <span class="value">valor</span>) {
+  <span class="selector">.elemento</span> {
+    <span class="property">propiedad</span>: <span class="value">valor</span>;
+  }
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Enfoque mobile-first (recomendado)</h4>
+            <p>Estilos base para movil, luego se anaden con <code>min-width</code> para pantallas mas grandes.</p>
+            <div class="code-snippet">
+<span class="comment">/* Estilos base = movil */</span>
+<span class="selector">.grid</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">1fr</span>;
+  <span class="property">gap</span>: <span class="value">16px</span>;
+}
+
+<span class="comment">/* Tablet: 2 columnas */</span>
+<span class="selector">@media</span> (<span class="property">min-width</span>: <span class="value">768px</span>) {
+  <span class="selector">.grid</span> {
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(2, 1fr)</span>;
+  }
+}
+
+<span class="comment">/* Desktop: 3 columnas */</span>
+<span class="selector">@media</span> (<span class="property">min-width</span>: <span class="value">1024px</span>) {
+  <span class="selector">.grid</span> {
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>;
+  }
+}
+
+<span class="comment">/* Desktop grande: 4 columnas */</span>
+<span class="selector">@media</span> (<span class="property">min-width</span>: <span class="value">1200px</span>) {
+  <span class="selector">.grid</span> {
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(4, 1fr)</span>;
+  }
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Condiciones multiples</h4>
+            <div class="code-snippet">
+<span class="comment">/* Combinar con AND */</span>
+<span class="selector">@media</span> (<span class="property">min-width</span>: <span class="value">768px</span>) <span class="selector">and</span> (<span class="property">max-width</span>: <span class="value">1024px</span>) {
+  <span class="selector">.container</span> { <span class="property">max-width</span>: <span class="value">90%</span>; }
+}
+
+<span class="comment">/* Orientacion */</span>
+<span class="selector">@media</span> (<span class="property">orientation</span>: <span class="value">portrait</span>) {
+  <span class="selector">.layout</span> { <span class="property">flex-direction</span>: <span class="value">column</span>; }
+}
+
+<span class="comment">/* Preferencias del usuario */</span>
+<span class="selector">@media</span> (<span class="property">prefers-color-scheme</span>: <span class="value">dark</span>) {
+  <span class="selector">body</span> { <span class="property">background</span>: <span class="value">#111</span>; }
+}
+
+<span class="selector">@media</span> (<span class="property">prefers-reduced-motion</span>: <span class="value">reduce</span>) {
+  <span class="selector">*</span> { <span class="property">animation</span>: <span class="value">none</span>; }
+}
+
+<span class="comment">/* Multiples media queries */</span>
+<span class="selector">@media</span> (<span class="property">min-width</span>: <span class="value">768px</span>) <span class="selector">and</span> (<span class="property">orientation</span>: <span class="value">landscape</span>) {
+  <span class="selector">.sidebar</span> { <span class="property">display</span>: <span class="value">block</span>; }
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Demo en vivo - Resize el navegador</h4>
+            <div class="query-demo-box">
+              Tu viewport actual: <span class="current-bp" id="viewportWidth">--</span>px
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="concept-separator">
+
+    <!-- ==========================================
+         8. VARIABLES CSS
+         ========================================== -->
+    <div class="card-glass" id="variables-css">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-palette"></i> 8. Variables CSS (Custom Properties)</h3>
+        <p class="concept-intro">
+          Las <strong>variables CSS</strong> (Custom Properties) permiten definir valores reutilizables.
+          Son fundamentales para crear temas, mantener consistencia y hacer tu CSS mas mantenible.
+        </p>
+
+        <div class="visual-example">
+          <div class="display-demo-label">Variables del tema actual</div>
+          <div class="var-demo-row">
+            <div class="var-swatch" style="background:var(--accent-1);">--accent-1</div>
+            <div class="var-swatch" style="background:var(--accent-2);">--accent-2</div>
+            <div class="var-swatch" style="background:var(--accent-3);">--accent-3</div>
+            <div class="var-swatch" style="background:var(--accent-4);">--accent-4</div>
+            <div class="var-swatch" style="background:var(--accent-5);">--accent-5</div>
+          </div>
+        </div>
+
+        <div class="deep-dive-section">
+          <div class="deep-dive-card">
+            <h4>Definir variables en :root</h4>
+            <div class="code-snippet">
+<span class="selector">:root</span> {
+  <span class="property">--color-primary</span>: <span class="value">#6c5ce7</span>;
+  <span class="property">--color-secondary</span>: <span class="value">#a29bfe</span>;
+  <span class="property">--spacing-unit</span>: <span class="value">16px</span>;
+  <span class="property">--border-radius</span>: <span class="value">12px</span>;
+  <span class="property">--font-size-base</span>: <span class="value">1rem</span>;
+  <span class="property">--shadow-sm</span>: <span class="value">0 2px 8px rgba(0,0,0,0.1)</span>;
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Usar variables con var()</h4>
+            <div class="code-snippet">
+<span class="selector">.boton</span> {
+  <span class="property">background</span>: <span class="value">var(--color-primary)</span>;
+  <span class="property">padding</span>: <span class="value">var(--spacing-unit)</span>;
+  <span class="property">border-radius</span>: <span class="value">var(--border-radius)</span>;
+  <span class="property">font-size</span>: <span class="value">var(--font-size-base)</span>;
+  <span class="property">box-shadow</span>: <span class="value">var(--shadow-sm)</span>;
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Fallbacks (valores por defecto)</h4>
+            <div class="code-snippet">
+<span class="comment">/* Segundo argumento como fallback */</span>
+<span class="selector">.card</span> {
+  <span class="property">background</span>: <span class="value">var(--card-bg, #ffffff)</span>;
+  <span class="property">color</span>: <span class="value">var(--text-color, #333333)</span>;
+  <span class="property">padding</span>: <span class="value">var(--spacing, 16px)</span>;
+}
+
+<span class="comment">/* La variable se resuelve al valor por defecto si no existe */</span>
+<span class="selector">.card-dark</span> {
+  <span class="property">--card-bg</span>: <span class="value">#1a1a2e</span>;
+  <span class="property">--text-color</span>: <span class="value">#f0f0f5</span>;
+  <span class="comment">/* Usa los valores definidos */</span>
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Theming con data-attributes</h4>
+            <div class="code-snippet">
+<span class="comment">/* Tema oscuro */</span>
+<span class="selector">[data-theme="dark"]</span> {
+  <span class="property">--bg-primary</span>: <span class="value">#0f0f1a</span>;
+  <span class="property">--text-primary</span>: <span class="value">#f0f0f5</span>;
+  <span class="property">--bg-card</span>: <span class="value">rgba(30, 30, 55, 0.7)</span>;
+}
+
+<span class="comment">/* Tema claro */</span>
+<span class="selector">[data-theme="light"]</span> {
+  <span class="property">--bg-primary</span>: <span class="value">#f5f5fa</span>;
+  <span class="property">--text-primary</span>: <span class="value">#1a1a2e</span>;
+  <span class="property">--bg-card</span>: <span class="value">rgba(255, 255, 255, 0.9)</span>;
+}
+
+<span class="selector">body</span> {
+  <span class="property">background</span>: <span class="value">var(--bg-primary)</span>;
+  <span class="property">color</span>: <span class="value">var(--text-primary)</span>;
+  <span class="property">transition</span>: <span class="value">background 0.4s, color 0.4s</span>;
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Variables Scoped (alcance local)</h4>
+            <div class="code-snippet">
+<span class="comment">/* Variable global */</span>
+<span class="selector">:root</span> {
+  <span class="property">--spacing</span>: <span class="value">16px</span>;
+}
+
+<span class="comment">/* Variable local - solo dentro de .sidebar */</span>
+<span class="selector">.sidebar</span> {
+  <span class="property">--spacing</span>: <span class="value">8px</span>;    <span class="comment">/* Sobreescribe la global */</span>
+  <span class="property">padding</span>: <span class="value">var(--spacing)</span>;  <span class="comment">/* = 8px */</span>
+}
+
+<span class="comment">/* El resto del sitio usa la global (16px) */</span>
+<span class="selector">.content</span> {
+  <span class="property">padding</span>: <span class="value">var(--spacing)</span>;  <span class="comment">/* = 16px */</span>
+}
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Beneficios de las variables CSS</h4>
+            <ul>
+              <li><strong>Temas dinamicos</strong> - Cambia todo el sitio actualizando solo las variables</li>
+              <li><strong>Mantenimiento facil</strong> - Un valor definido en un solo lugar, usado en 100</li>
+              <li><strong>Fallbacks</strong> - Valores por defecto si la variable no existe</li>
+              <li><strong>Alcance local</strong> - Sobreescribe variables en componentes especificos</li>
+              <li><strong>JavaScript friendly</strong> - Se leen y escriben con <code>element.style.setProperty()</code></li>
+              <li><strong>Sin preprocesadores</strong> - Nativo en el navegador, sin Sass ni Less</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer"><p>Construido para aprender. Dominar estos fundamentos es la base para Flexbox, Grid y cualquier layout CSS.</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/playground.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script>
+    (function() {
+      var el = document.getElementById('viewportWidth');
+      if (el) {
+        function updateWidth() { el.textContent = window.innerWidth; }
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+      }
+    })();
+  </script>
+</body>
+</html>

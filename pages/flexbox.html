@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox - Playground Interactivo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand"><i class="bi bi-code-square"></i> FlexGrid</a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="flexbox.html" class="active"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="grid.html"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="patrones.html"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="conceptos.html"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="recursos.html"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="navbar-toggle" id="navToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge"><i class="bi bi-arrows-expand"></i> Flexbox Playground</div>
+      <h1>Flexbox</h1>
+      <p>Modifica las propiedades del container y de cada item. Haz click en un item para editarlo.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card-glass" id="section-flexbox">
+      <div class="card-body-custom">
+
+        <!-- Container Properties -->
+        <h3 class="props-section-title"><i class="bi bi-box"></i> Propiedades del Container</h3>
+        <div class="controls-grid" id="container-props">
+          <div class="control-group">
+            <label>flex-direction</label>
+            <div class="option-pills" data-prop="flexDirection">
+              <span class="option-pill active" data-value="row">row</span>
+              <span class="option-pill" data-value="row-reverse">row-reverse</span>
+              <span class="option-pill" data-value="column">column</span>
+              <span class="option-pill" data-value="column-reverse">column-reverse</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>justify-content</label>
+            <div class="option-pills" data-prop="justifyContent">
+              <span class="option-pill active" data-value="flex-start">flex-start</span>
+              <span class="option-pill" data-value="flex-end">flex-end</span>
+              <span class="option-pill" data-value="center">center</span>
+              <span class="option-pill" data-value="space-between">space-between</span>
+              <span class="option-pill" data-value="space-around">space-around</span>
+              <span class="option-pill" data-value="space-evenly">space-evenly</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>align-items</label>
+            <div class="option-pills" data-prop="alignItems">
+              <span class="option-pill" data-value="stretch">stretch</span>
+              <span class="option-pill active" data-value="flex-start">flex-start</span>
+              <span class="option-pill" data-value="flex-end">flex-end</span>
+              <span class="option-pill" data-value="center">center</span>
+              <span class="option-pill" data-value="baseline">baseline</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>flex-wrap</label>
+            <div class="option-pills" data-prop="flexWrap">
+              <span class="option-pill active" data-value="nowrap">nowrap</span>
+              <span class="option-pill" data-value="wrap">wrap</span>
+              <span class="option-pill" data-value="wrap-reverse">wrap-reverse</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>gap (px)</label>
+            <input type="text" id="flexGap" value="10" placeholder="10">
+          </div>
+          <div class="control-group">
+            <label>align-content</label>
+            <div class="option-pills" data-prop="alignContent">
+              <span class="option-pill active" data-value="flex-start">flex-start</span>
+              <span class="option-pill" data-value="flex-end">flex-end</span>
+              <span class="option-pill" data-value="center">center</span>
+              <span class="option-pill" data-value="space-between">space-between</span>
+              <span class="option-pill" data-value="space-around">space-around</span>
+              <span class="option-pill" data-value="stretch">stretch</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item Properties -->
+        <h3 class="props-section-title"><i class="bi bi-grid"></i> Propiedades del Item <span id="itemPropsLabel" class="item-label">(selecciona un item)</span></h3>
+        <div class="controls-grid" id="item-props">
+          <div class="control-group">
+            <label>flex-grow</label>
+            <div class="option-pills" data-prop="flexGrow">
+              <span class="option-pill active" data-value="0">0</span>
+              <span class="option-pill" data-value="1">1</span>
+              <span class="option-pill" data-value="2">2</span>
+              <span class="option-pill" data-value="3">3</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>flex-shrink</label>
+            <div class="option-pills" data-prop="flexShrink">
+              <span class="option-pill active" data-value="1">1</span>
+              <span class="option-pill" data-value="0">0</span>
+              <span class="option-pill" data-value="2">2</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>align-self</label>
+            <div class="option-pills" data-prop="alignSelf">
+              <span class="option-pill active" data-value="auto">auto</span>
+              <span class="option-pill" data-value="flex-start">flex-start</span>
+              <span class="option-pill" data-value="flex-end">flex-end</span>
+              <span class="option-pill" data-value="center">center</span>
+              <span class="option-pill" data-value="stretch">stretch</span>
+            </div>
+          </div>
+          <div class="control-group">
+            <label>order</label>
+            <div class="option-pills" data-prop="order">
+              <span class="option-pill active" data-value="0">0</span>
+              <span class="option-pill" data-value="1">1</span>
+              <span class="option-pill" data-value="-1">-1</span>
+              <span class="option-pill" data-value="2">2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Playground -->
+        <div class="playground-area" data-label="Container">
+          <div class="flex-playground" id="flexPlayground">
+            <div class="flex-item selected">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+            <div class="flex-item">5</div>
+            <div class="flex-item">6</div>
+          </div>
+        </div>
+
+        <!-- Code Output -->
+        <div class="code-output">
+          <div class="code-header">
+            <span><i class="bi bi-code-slash"></i> CSS Generado</span>
+            <button class="copy-btn" data-target="flexCode"><i class="bi bi-clipboard"></i> Copiar</button>
+          </div>
+          <div class="code-body" id="flexCode"></div>
+        </div>
+
+        <!-- Deep Dive -->
+        <div class="deep-dive-section">
+          <h3 class="props-section-title"><i class="bi bi-book"></i> Profundiza en Flexbox</h3>
+
+          <div class="deep-dive-card">
+            <h4>flex-grow</h4>
+            <p>Define cuanto crece un item respecto a sus hermanos. Si todos valen 1, se reparten el espacio equitativamente. Si uno vale 2, ocupa el doble.</p>
+            <div class="code-snippet">
+              <span class="property">flex-grow</span>: <span class="value">1</span>;  <span class="comment">/* Los items se reparten el espacio */</span>
+              <span class="property">flex-grow</span>: <span class="value">0</span>;  <span class="comment">/* El item mantiene su tamano fijo */</span>
+              <span class="property">flex-grow</span>: <span class="value">2</span>;  <span class="comment">/* Este item crece el doble que los demas */</span>
+            </div>
+            <div class="visual-example">
+              <div class="visual-row">
+                <div style="flex:1; background:var(--accent-1); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:1</div>
+                <div style="flex:1; background:var(--accent-3); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:1</div>
+                <div style="flex:1; background:var(--accent-4); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:1</div>
+              </div>
+              <div class="visual-row" style="margin-top:6px;">
+                <div style="flex:1; background:var(--accent-1); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:1</div>
+                <div style="flex:2; background:var(--accent-3); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:2</div>
+                <div style="flex:1; background:var(--accent-4); color:#fff; padding:8px 12px; border-radius:8px; text-align:center; font-size:0.7rem;">flex:1</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>flex-shrink</h4>
+            <p>Define cuanto se encoge un item cuando no cabe. Por defecto es 1 (se encoge). Si es 0, el item no se encoge nunca.</p>
+            <div class="code-snippet">
+              <span class="property">flex-shrink</span>: <span class="value">1</span>;  <span class="comment">/* Se encoge normalmente */</span>
+              <span class="property">flex-shrink</span>: <span class="value">0</span>;  <span class="comment">/* Nunca se encoge, mantiene su tamano */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>order</h4>
+            <p>Cambia el orden visual de los items sin tocar el HTML. Por defecto todos valen 0. Valores negativos van primero, positivos despues.</p>
+            <div class="code-snippet">
+              <span class="property">order</span>: <span class="value">-1</span>;  <span class="comment">/* Va primero */</span>
+              <span class="property">order</span>: <span class="value">0</span>;   <span class="comment">/* Orden normal (defecto) */</span>
+              <span class="property">order</span>: <span class="value">1</span>;   <span class="comment">/* Va despues */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>align-self</h4>
+            <p>Sobreescribe align-items para un item individual. Permite alinear un item distinto a los demas en el eje cruz.</p>
+            <div class="code-snippet">
+              <span class="property">align-self</span>: <span class="value">center</span>;  <span class="comment">/* Solo este item se centra */</span>
+              <span class="property">align-self</span>: <span class="value">flex-end</span>; <span class="comment">/* Solo este item va al fondo */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>flex shorthand</h4>
+            <p>Atajo para flex-grow, flex-shrink y flex-basis en una sola linea. El mas usado es flex: 1 que equivale a flex: 1 1 0%.</p>
+            <div class="code-snippet">
+              <span class="property">flex</span>: <span class="value">1</span>;         <span class="comment">/* flex: 1 1 0% - crece y encoge */</span>
+              <span class="property">flex</span>: <span class="value">0 0 200px</span>; <span class="comment">/* ancho fijo de 200px */</span>
+              <span class="property">flex</span>: <span class="value">1 1 auto</span>;  <span class="comment">/* basado en el contenido */</span>
+            </div>
+          </div>
+
+          <div class="deep-dive-card">
+            <h4>Centrado perfecto con Flexbox</h4>
+            <p>La forma mas rapida de centrar un elemento tanto horizontal como verticalmente.</p>
+            <div class="code-snippet">
+              <span class="selector">.container</span> {
+                <span class="property">display</span>: <span class="value">flex</span>;
+                <span class="property">justify-content</span>: <span class="value">center</span>;
+                <span class="property">align-items</span>: <span class="value">center</span>;
+                <span class="property">min-height</span>: <span class="value">100vh</span>;
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="info-section">
+          <h3 class="props-section-title"><i class="bi bi-lightbulb"></i> Resumen Rapido</h3>
+          <div class="info-grid">
+            <div class="info-card"><h4>flex-direction</h4><p>Define la direccion del eje principal. row = horizontal, column = vertical.</p></div>
+            <div class="info-card"><h4>justify-content</h4><p>Alinea los items en el eje principal del container.</p></div>
+            <div class="info-card"><h4>align-items</h4><p>Alinea los items en el eje transversal (cruz).</p></div>
+            <div class="info-card"><h4>flex-wrap</h4><p>Controla si los items saltan de linea o se mantienen en una sola.</p></div>
+            <div class="info-card"><h4>gap</h4><p>Espacio entre items. Reemplaza los margins con blood hacks.</p></div>
+            <div class="info-card"><h4>align-content</h4><p>Alinea lineas cuando hay wrap (multiples lineas de items).</p></div>
+            <div class="info-card"><h4>flex-grow</h4><p>Cuanto crece un item. 0 = fijo, 1+ = compite por espacio.</p></div>
+            <div class="info-card"><h4>flex-shrink</h4><p>Cuanto se encoge. 0 = nunca, 1+ = se encoge proporcionalmente.</p></div>
+            <div class="info-card"><h4>order</h4><p>Cambia el orden visual. Negativos primero, positivos despues.</p></div>
+            <div class="info-card"><h4>align-self</h4><p>Sobreescribe align-items para un item individual.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><p>Construido para aprender. Modifica, experimenta y domina Flexbox & Grid.</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/playground.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

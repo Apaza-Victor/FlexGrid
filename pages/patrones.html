@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrones de Layout - CSS Flexbox & Grid</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand"><i class="bi bi-code-square"></i> FlexGrid</a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="flexbox.html"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="grid.html"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="patrones.html" class="active"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="conceptos.html"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="recursos.html"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema"><i class="bi bi-moon-stars-fill"></i></button>
+        <button class="navbar-toggle" id="navToggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge"><i class="bi bi-layout-wtf"></i> Layout Patterns</div>
+      <h1>Patrones de Layout</h1>
+      <p>Patrones reales de CSS para interfaces modernas. Cada patron incluye un demo visual, el codigo completo y una explicacion.</p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ============================================
+         1. HOLY GRAIL LAYOUT
+         ============================================ -->
+    <div class="card-glass">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-grid-3x3-gap"></i> 1. Holy Grail Layout <span style="font-size:0.65rem; color:var(--accent-4); font-weight:500; margin-left:8px;">GRID</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">El clasico layout de pagina: header arriba, sidebar izquierda, contenido principal al centro, sidebar derecha, y footer abajo. Grid-template-areas lo hace trivial.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+          <div style="display:grid; grid-template-areas:'header header header' 'nav main aside' 'footer footer footer'; grid-template-columns:120px 1fr 120px; grid-template-rows:40px 1fr 40px; gap:0; min-height:280px; font-size:0.7rem; font-weight:600; text-align:center;">
+            <div style="grid-area:header; background:var(--accent-1); color:#fff; display:flex; align-items:center; justify-content:center;">HEADER</div>
+            <div style="grid-area:nav; background:rgba(108,92,231,0.2); color:var(--accent-2); display:flex; align-items:center; justify-content:center; border-right:1px solid var(--border-glass);">NAV</div>
+            <div style="grid-area:main; background:rgba(253,121,168,0.1); color:var(--accent-3); display:flex; align-items:center; justify-content:center;">MAIN CONTENT</div>
+            <div style="grid-area:aside; background:rgba(0,206,201,0.15); color:var(--accent-4); display:flex; align-items:center; justify-content:center; border-left:1px solid var(--border-glass);">ASIDE</div>
+            <div style="grid-area:footer; background:var(--accent-5); color:#1a1a2e; display:flex; align-items:center; justify-content:center;">FOOTER</div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.page</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-areas</span>:
+    <span class="value">"header header header"</span>
+    <span class="value">"nav    main   aside"</span>
+    <span class="value">"footer footer footer"</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">200px 1fr 200px</span>;
+  <span class="property">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;
+  <span class="property">min-height</span>: <span class="value">100vh</span>;
+}
+<span class="selector">.header</span> { <span class="property">grid-area</span>: <span class="value">header</span>; }
+<span class="selector">.nav</span>    { <span class="property">grid-area</span>: <span class="value">nav</span>; }
+<span class="selector">.main</span>   { <span class="property">grid-area</span>: <span class="value">main</span>; }
+<span class="selector">.aside</span>  { <span class="property">grid-area</span>: <span class="value">aside</span>; }
+<span class="selector">.footer</span> { <span class="property">grid-area</span>: <span class="value">footer</span>; }</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         2. SIDEBAR FIJO + CONTENIDO
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-panel-left"></i> 2. Sidebar Fijo + Contenido Flexible <span style="font-size:0.65rem; color:var(--accent-4); font-weight:500; margin-left:8px;">GRID</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">El sidebar mantiene un ancho fijo mientras el contenido principal se expande. Perfecto para dashboards, settings y documentacion.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+          <div style="display:grid; grid-template-columns:160px 1fr; min-height:200px; font-size:0.7rem;">
+            <div style="background:rgba(108,92,231,0.2); padding:16px; border-right:1px solid var(--border-glass);">
+              <div style="color:var(--accent-2); font-weight:700; margin-bottom:12px;">MENU</div>
+              <div style="color:var(--text-secondary); margin-bottom:8px; padding:6px 10px; border-radius:6px; background:rgba(108,92,231,0.15);">Dashboard</div>
+              <div style="color:var(--text-muted); margin-bottom:8px; padding:6px 10px;">Configuraciones</div>
+              <div style="color:var(--text-muted); margin-bottom:8px; padding:6px 10px;">Usuarios</div>
+              <div style="color:var(--text-muted); padding:6px 10px;">Reportes</div>
+            </div>
+            <div style="background:rgba(253,121,168,0.06); padding:16px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-weight:600;">
+              CONTENIDO PRINCIPAL (flex: 1)
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.layout</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">250px 1fr</span>;
+  <span class="property">min-height</span>: <span class="value">100vh</span>;
+}
+<span class="selector">.sidebar</span> {
+  <span class="property">width</span>: <span class="value">250px</span>;
+  <span class="property">position</span>: <span class="value">sticky</span>;
+  <span class="property">top</span>: <span class="value">0</span>;
+  <span class="property">height</span>: <span class="value">100vh</span>;
+  <span class="property">overflow-y</span>: <span class="value">auto</span>;
+}
+<span class="selector">.content</span> {
+  <span class="property">padding</span>: <span class="value">2rem</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         3. CARD GRID RESPONSIVE
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-grid-3x3-gap"></i> 3. Card Grid Responsive <span style="font-size:0.65rem; color:var(--accent-4); font-weight:500; margin-left:8px;">GRID</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Grid auto-fill con minmax crea columnas que se adaptan automaticamente al espacio disponible. Sin media queries.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:12px; margin-bottom:20px;">
+          <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:10px;">
+            <div style="background:linear-gradient(135deg, #6c5ce7, #a29bfe); color:#fff; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 1</div>
+            <div style="background:linear-gradient(135deg, #fd79a8, #e84393); color:#fff; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 2</div>
+            <div style="background:linear-gradient(135deg, #00cec9, #00b894); color:#fff; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 3</div>
+            <div style="background:linear-gradient(135deg, #fdcb6e, #f39c12); color:#1a1a2e; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 4</div>
+            <div style="background:linear-gradient(135deg, #e17055, #d63031); color:#fff; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 5</div>
+            <div style="background:linear-gradient(135deg, #0984e3, #74b9ff); color:#fff; padding:20px 14px; border-radius:var(--radius-md); text-align:center; font-size:0.7rem; font-weight:600;">Card 6</div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.card-grid</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">repeat(auto-fill, minmax(300px, 1fr))</span>;
+  <span class="property">gap</span>: <span class="value">24px</span>;
+}
+
+<span class="comment">/* Cada card se adapta: de 300px minimo a 1fr */</span>
+<span class="comment">/* En un contenedor de 900px caben 3 columnas */</span>
+<span class="comment">/* En uno de 600px, solo 2 columnas */</span>
+<span class="comment">/* Sin necesidad de media queries */</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         4. NAVBAR FLEXBOX
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-arrows-expand"></i> 4. Navbar Flexbox <span style="font-size:0.65rem; color:var(--accent-3); font-weight:500; margin-left:8px;">FLEXBOX</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Logo a la izquierda, links a la derecha, con space-between. El patron mas comun para navegacion. Si el logo tiene icono-texto-icono, usa un flex interno.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:rgba(108,92,231,0.1); border-bottom:1px solid var(--border-glass);">
+            <div style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:0.85rem; color:var(--text-primary);">
+              <span style="background:var(--accent-1); color:#fff; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.7rem;">F</span>
+              FlexGrid
+            </div>
+            <div style="display:flex; align-items:center; gap:16px; font-size:0.75rem; color:var(--text-secondary);">
+              <span style="padding:6px 12px; border-radius:50px; background:rgba(255,255,255,0.05);">Inicio</span>
+              <span style="padding:6px 12px; border-radius:50px; background:var(--accent-1); color:#fff;">Flexbox</span>
+              <span style="padding:6px 12px; border-radius:50px; background:rgba(255,255,255,0.05);">Grid</span>
+              <span style="padding:6px 12px; border-radius:50px; background:rgba(255,255,255,0.05);">Mas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.navbar</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">align-items</span>: <span class="value">center</span>;
+  <span class="property">justify-content</span>: <span class="value">space-between</span>;
+  <span class="property">padding</span>: <span class="value">0 24px</span>;
+  <span class="property">height</span>: <span class="value">64px</span>;
+}
+<span class="selector">.nav-links</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">align-items</span>: <span class="value">center</span>;
+  <span class="property">gap</span>: <span class="value">8px</span>;
+  <span class="property">list-style</span>: <span class="value">none</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         5. FOOTER CENTRADO 3 COLUMNAS
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-arrows-expand"></i> 5. Footer Centrado 3 Columnas <span style="font-size:0.65rem; color:var(--accent-3); font-weight:500; margin-left:8px;">FLEXBOX</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Tres columnas alineadas al centro dentro de cada columna, con justify-content:space-between en el container. Comun en footers de sitios reales.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+          <div style="background:rgba(15,15,26,0.3); padding:20px; border-radius:var(--radius-md);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; text-align:center;">
+              <div style="flex:1; min-width:100px;">
+                <div style="font-weight:700; font-size:0.8rem; color:var(--accent-2); margin-bottom:8px;">Empresa</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); line-height:1.8;">Sobre nosotros<br>Carreras<br>Prensa</div>
+              </div>
+              <div style="flex:1; min-width:100px;">
+                <div style="font-weight:700; font-size:0.8rem; color:var(--accent-2); margin-bottom:8px;">Producto</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); line-height:1.8;">Funciones<br>Precios<br>Docs</div>
+              </div>
+              <div style="flex:1; min-width:100px;">
+                <div style="font-weight:700; font-size:0.8rem; color:var(--accent-2); margin-bottom:8px;">Legal</div>
+                <div style="font-size:0.7rem; color:var(--text-muted); line-height:1.8;">Privacidad<br>Terminos<br>Cookies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.footer</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">justify-content</span>: <span class="value">space-between</span>;
+  <span class="property">flex-wrap</span>: <span class="value">wrap</span>;
+  <span class="property">gap</span>: <span class="value">2rem</span>;
+  <span class="property">padding</span>: <span class="value">3rem 2rem</span>;
+}
+<span class="selector">.footer-col</span> {
+  <span class="property">flex</span>: <span class="value">1</span>;
+  <span class="property">text-align</span>: <span class="value">center</span>;
+  <span class="property">min-width</span>: <span class="value">150px</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         6. STICKY FOOTER
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-grid-3x3-gap"></i> 6. Sticky Footer <span style="font-size:0.65rem; color:var(--accent-4); font-weight:500; margin-left:8px;">GRID</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">El footer siempre queda pegado al fondo de la pagina, incluso cuando el contenido es poco. grid-template-rows: auto 1fr auto lo logra con una sola linea.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+          <div style="display:grid; grid-template-rows:auto 1fr auto; min-height:280px; font-size:0.7rem; font-weight:600;">
+            <div style="background:var(--accent-1); color:#fff; padding:12px 16px; text-align:center;">HEADER</div>
+            <div style="background:rgba(253,121,168,0.08); color:var(--text-muted); padding:16px; display:flex; align-items:flex-start;">
+              <div>
+                <div style="font-weight:700; color:var(--accent-3); margin-bottom:6px;">CONTENIDO (1fr)</div>
+                <div style="font-size:0.65rem; color:var(--text-muted);">Este area crece para llenar el espacio.</div>
+              </div>
+            </div>
+            <div style="background:var(--accent-5); color:#1a1a2e; padding:12px 16px; text-align:center;">FOOTER (siempre abajo)</div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.page</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-rows</span>: <span class="value">auto 1fr auto</span>;
+  <span class="property">min-height</span>: <span class="value">100vh</span>;
+}
+
+<span class="comment">/* Header: auto (se ajusta al contenido) */</span>
+<span class="comment">/* Main:   1fr (llena todo el espacio)     */</span>
+<span class="comment">/* Footer: auto (se ajusta al contenido)   */</span>
+<span class="comment">/* Con min-height:100vh, el footer nunca   */</span>
+<span class="comment">/* queda flotando si el contenido es poco. */</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         7. CENTRADO PERFECTO
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-arrows-expand"></i> 7. Centrado Perfecto <span style="font-size:0.65rem; color:var(--accent-3); font-weight:500; margin-left:8px;">FLEXBOX</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Centrar un elemento tanto horizontal como verticalmente. Con Flexbox son 3 propiedades. Con Grid, son 2.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px; display:flex; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:150px;">
+            <div style="font-size:0.65rem; color:var(--text-muted); text-align:center; margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Flexbox</div>
+            <div style="display:flex; justify-content:center; align-items:center; min-height:160px; background:rgba(108,92,231,0.06); border:1px solid var(--border-glass); border-radius:var(--radius-md);">
+              <div style="background:var(--accent-1); color:#fff; padding:16px 24px; border-radius:var(--radius-md); font-size:0.7rem; font-weight:700;">Centrado</div>
+            </div>
+          </div>
+          <div style="flex:1; min-width:150px;">
+            <div style="font-size:0.65rem; color:var(--text-muted); text-align:center; margin-bottom:8px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Grid</div>
+            <div style="display:grid; place-items:center; min-height:160px; background:rgba(253,121,168,0.06); border:1px solid var(--border-glass); border-radius:var(--radius-md);">
+              <div style="background:var(--accent-3); color:#fff; padding:16px 24px; border-radius:var(--radius-md); font-size:0.7rem; font-weight:700;">Centrado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="comment">/* Opcion 1: Flexbox */</span>
+<span class="selector">.center-flex</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">justify-content</span>: <span class="value">center</span>;
+  <span class="property">align-items</span>: <span class="value">center</span>;
+}
+
+<span class="comment">/* Opcion 2: Grid (la mas corta) */</span>
+<span class="selector">.center-grid</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">place-items</span>: <span class="value">center</span>;
+}
+
+<span class="comment">/* Opcion 3: Grid shorthand */</span>
+<span class="selector">.center-grid-alt</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">place-content</span>: <span class="value">center</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         8. GALLERY LAYOUT
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-grid-3x3-gap"></i> 8. Gallery Layout <span style="font-size:0.65rem; color:var(--accent-4); font-weight:500; margin-left:8px;">GRID</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Items que span multiples columnas o filas crean layouts tipo galeria visual. Usar grid-column y grid-row para controlar el tamano de cada pieza.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:12px; margin-bottom:20px;">
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); grid-auto-rows:80px; gap:8px;">
+            <div style="grid-column:span 2; background:linear-gradient(135deg, #6c5ce7, #a29bfe); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">Span 2 Cols</div>
+            <div style="background:linear-gradient(135deg, #fd79a8, #e84393); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">1 Col</div>
+            <div style="background:linear-gradient(135deg, #00cec9, #00b894); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">1 Col</div>
+            <div style="grid-column:span 2; background:linear-gradient(135deg, #fdcb6e, #f39c12); color:#1a1a2e; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">Span 2 Cols</div>
+            <div style="grid-row:span 2; background:linear-gradient(135deg, #e17055, #d63031); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">Span 2 Rows</div>
+            <div style="background:linear-gradient(135deg, #0984e3, #74b9ff); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">1x1</div>
+            <div style="background:linear-gradient(135deg, #a29bfe, #6c5ce7); color:#fff; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">1x1</div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.gallery</span> {
+  <span class="property">display</span>: <span class="value">grid</span>;
+  <span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>;
+  <span class="property">grid-auto-rows</span>: <span class="value">120px</span>;
+  <span class="property">gap</span>: <span class="value">12px</span>;
+}
+<span class="selector">.gallery .featured</span> {
+  <span class="property">grid-column</span>: <span class="value">span 2</span>;
+}
+<span class="selector">.gallery .tall</span> {
+  <span class="property">grid-row</span>: <span class="value">span 2</span>;
+}
+<span class="selector">.gallery .wide-tall</span> {
+  <span class="property">grid-column</span>: <span class="value">span 2</span>;
+  <span class="property">grid-row</span>: <span class="value">span 2</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         9. PRICING TABLE
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-arrows-expand"></i> 9. Pricing Table <span style="font-size:0.65rem; color:var(--accent-3); font-weight:500; margin-left:8px;">FLEXBOX</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Cards de precios alineadas con el boton siempre abajo independientemente del contenido de cada card. El truco es flex:1 en el contenido y alineacion flex-end en el boton.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:16px; margin-bottom:20px;">
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;">
+            <!-- Basic -->
+            <div style="flex:1; min-width:130px; border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:16px; display:flex; flex-direction:column; background:var(--bg-glass);">
+              <div style="font-size:0.7rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Basico</div>
+              <div style="font-size:1.4rem; font-weight:900; color:var(--text-primary); margin-bottom:8px;">$9<span style="font-size:0.7rem; font-weight:400; color:var(--text-muted);">/mes</span></div>
+              <div style="font-size:0.7rem; color:var(--text-secondary); line-height:1.8; flex:1;">5 Proyectos<br>10GB Almacenamiento<br>Soporte email</div>
+              <div style="margin-top:16px; padding:10px; border-radius:var(--radius-sm); text-align:center; font-size:0.75rem; font-weight:600; border:1px solid var(--border-glass); color:var(--text-secondary); cursor:pointer;">Elegir</div>
+            </div>
+            <!-- Pro -->
+            <div style="flex:1; min-width:130px; border:2px solid var(--accent-1); border-radius:var(--radius-md); padding:16px; display:flex; flex-direction:column; background:rgba(108,92,231,0.08); position:relative;">
+              <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--accent-1); color:#fff; font-size:0.6rem; font-weight:700; padding:3px 12px; border-radius:50px; text-transform:uppercase;">Popular</div>
+              <div style="font-size:0.7rem; color:var(--accent-2); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Pro</div>
+              <div style="font-size:1.4rem; font-weight:900; color:var(--text-primary); margin-bottom:8px;">$29<span style="font-size:0.7rem; font-weight:400; color:var(--text-muted);">/mes</span></div>
+              <div style="font-size:0.7rem; color:var(--text-secondary); line-height:1.8; flex:1;">Proyectos ilimitados<br>100GB Almacenamiento<br>Soporte prioritario<br>API acceso</div>
+              <div style="margin-top:16px; padding:10px; border-radius:var(--radius-sm); text-align:center; font-size:0.75rem; font-weight:700; background:var(--accent-1); color:#fff; cursor:pointer;">Elegir</div>
+            </div>
+            <!-- Enterprise -->
+            <div style="flex:1; min-width:130px; border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:16px; display:flex; flex-direction:column; background:var(--bg-glass);">
+              <div style="font-size:0.7rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Enterprise</div>
+              <div style="font-size:1.4rem; font-weight:900; color:var(--text-primary); margin-bottom:8px;">$99<span style="font-size:0.7rem; font-weight:400; color:var(--text-muted);">/mes</span></div>
+              <div style="font-size:0.7rem; color:var(--text-secondary); line-height:1.8; flex:1;">Todo en Pro<br>Almacenamiento ilimitado<br>Soporte 24/7<br>SLA 99.9%</div>
+              <div style="margin-top:16px; padding:10px; border-radius:var(--radius-sm); text-align:center; font-size:0.75rem; font-weight:600; border:1px solid var(--border-glass); color:var(--text-secondary); cursor:pointer;">Contactar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.pricing</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">gap</span>: <span class="value">24px</span>;
+  <span class="property">align-items</span>: <span class="value">stretch</span>;
+}
+<span class="selector">.pricing-card</span> {
+  <span class="property">flex</span>: <span class="value">1</span>;
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">flex-direction</span>: <span class="value">column</span>;
+}
+<span class="selector">.pricing-card .features</span> {
+  <span class="property">flex</span>: <span class="value">1</span>;  <span class="comment">/* Empuja el boton abajo */</span>
+}
+<span class="selector">.pricing-card .btn</span> {
+  <span class="property">margin-top</span>: <span class="value">auto</span>; <span class="comment">/* Se pega al fondo */</span>
+}
+
+<span class="comment">/* El truco: align-items:stretch hace que todas */</span>
+<span class="comment">/* las cards tengan la misma altura, y flex:1 o  */</span>
+<span class="comment">/* margin-top:auto empuja el boton al fondo.   */</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         10. BREADCRUMB
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-arrows-expand"></i> 10. Breadcrumb <span style="font-size:0.65rem; color:var(--accent-3); font-weight:500; margin-left:8px;">FLEXBOX</span></h3>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:20px; line-height:1.7;">Navegacion de migas de pan con separadores visuales. Cada item es un link, con un separador "/" entre ellos usando flexbox y pseudo-elementos.</p>
+
+        <div class="visual-example" style="border:1px solid var(--border-glass); border-radius:var(--radius-md); padding:16px; margin-bottom:20px;">
+          <div style="display:flex; align-items:center; gap:0; flex-wrap:wrap; font-size:0.75rem;">
+            <span style="color:var(--accent-2); font-weight:600; cursor:pointer;">Inicio</span>
+            <span style="color:var(--text-muted); margin:0 8px; font-size:0.7rem;">/</span>
+            <span style="color:var(--accent-2); font-weight:600; cursor:pointer;">Productos</span>
+            <span style="color:var(--text-muted); margin:0 8px; font-size:0.7rem;">/</span>
+            <span style="color:var(--accent-2); font-weight:600; cursor:pointer;">CSS Grid</span>
+            <span style="color:var(--text-muted); margin:0 8px; font-size:0.7rem;">/</span>
+            <span style="color:var(--text-muted); font-weight:500;">Patrones</span>
+          </div>
+        </div>
+
+        <div class="code-output">
+          <div class="code-header"><span><i class="bi bi-code-slash"></i> HTML + CSS</span></div>
+          <div class="code-body"><span class="selector">.breadcrumb</span> {
+  <span class="property">display</span>: <span class="value">flex</span>;
+  <span class="property">align-items</span>: <span class="value">center</span>;
+  <span class="property">flex-wrap</span>: <span class="value">wrap</span>;
+  <span class="property">gap</span>: <span class="value">4px</span>;
+  <span class="property">font-size</span>: <span class="value">0.9rem</span>;
+}
+<span class="selector">.breadcrumb-item</span> + <span class="selector">.breadcrumb-item</span><span class="selector">::before</span> {
+  <span class="property">content</span>: <span class="value">"/"</span>;
+  <span class="property">margin</span>: <span class="value">0 8px</span>;
+  <span class="property">color</span>: <span class="value">var(--text-muted)</span>;
+}
+<span class="selector">.breadcrumb a</span> {
+  <span class="property">color</span>: <span class="value">var(--accent-2)</span>;
+  <span class="property">font-weight</span>: <span class="value">600</span>;
+}
+<span class="selector">.breadcrumb .current</span> {
+  <span class="property">color</span>: <span class="value">var(--text-muted)</span>;
+}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         RESUMEN
+         ============================================ -->
+    <div class="card-glass" style="margin-top:24px; margin-bottom:24px;">
+      <div class="card-body-custom">
+        <h3 class="props-section-title"><i class="bi bi-lightbulb"></i> Cuando usar cada patron</h3>
+        <div class="info-grid" style="margin-top:16px;">
+          <div class="info-card">
+            <h4>Layout de pagina</h4>
+            <p>Holy Grail, Sidebar Fijo, Sticky Footer. Usa <strong>Grid</strong> para layouts bidimensionales de pagina completa.</p>
+          </div>
+          <div class="info-card">
+            <h4>Componentes de nav</h4>
+            <p>Navbar, Breadcrumb, Footer multi-columna. Usa <strong>Flexbox</strong> para alinear en un eje.</p>
+          </div>
+          <div class="info-card">
+            <h4>Colecciones de items</h4>
+            <p>Card Grid, Gallery, Pricing Table. <strong>Grid</strong> para layouts de grilla, <strong>Flexbox</strong> para filas simples.</p>
+          </div>
+          <div class="info-card">
+            <h4>Centrado</h4>
+            <p><strong>Flexbox</strong>: justify + align center. <strong>Grid</strong>: place-items center (2 propiedades).</p>
+          </div>
+          <div class="info-card">
+            <h4>Responsive</h4>
+            <p><strong>Grid</strong>: auto-fill + minmax para grillas sin media queries. <strong>Flexbox</strong>: flex-wrap para items que saltan de linea.</p>
+          </div>
+          <div class="info-card">
+            <h4>Alineacion cruzada</h4>
+            <p><strong>Grid</strong>: alinea en ambos ejes a la vez. <strong>Flexbox</strong>: justify en el eje principal, align en el cruz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer"><p>Construido para aprender. Modifica, experimenta y domina Flexbox & Grid.</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/playground.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

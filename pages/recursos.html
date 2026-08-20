@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos - Enlaces Gratis para Aprender</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-brand">
+        <i class="bi bi-code-square"></i>
+        FlexGrid
+      </a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="flexbox.html"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="grid.html"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="patrones.html"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="conceptos.html"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="recursos.html" class="active"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+        <button class="navbar-toggle" id="navToggle">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="bi bi-bookmark-star-fill"></i>
+        Recursos Gratis
+      </div>
+      <h1>Recursos</h1>
+      <p>Enlaces seleccionados para aprender, practicar y conseguir materiales gratis de frontend y web development.</p>
+    </div>
+  </section>
+
+  <!-- Babylon.js 3D Scene -->
+  <div class="babylon-wrapper">
+    <canvas id="babylonCanvas"></canvas>
+    <div class="babylon-overlay">
+      <p><i class="bi bi-arrows-move"></i> Arrastra para rotar - Scroll para zoom</p>
+    </div>
+  </div>
+
+  <!-- Resources -->
+  <div class="container">
+
+    <!-- HTML & CSS -->
+    <div class="resource-category">
+      <h3><i class="bi bi-filetype-html" style="color:#e44d26"></i> HTML & CSS</h3>
+      <div class="resource-grid">
+        <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Documentacion</span>
+          </div>
+          <h4>MDN HTML</h4>
+          <p>La referencia definitiva de HTML. Guia completa con ejemplos y compatibilidad.</p>
+          <span class="resource-link">Ir a MDN <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Documentacion</span>
+          </div>
+          <h4>MDN CSS</h4>
+          <p>Referencia completa de CSS. Propiedades, valores, selectores y mucho mas.</p>
+          <span class="resource-link">Ir a MDN <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://css-tricks.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-lightbulb"></i>
+            <span class="resource-tag">Blog</span>
+          </div>
+          <h4>CSS-Tricks</h4>
+          <p>Articulos, guias y tricks de CSS. Flexbox Guide y Grid Guide son imperdibles.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.w3schools.com/css/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Tutorial</span>
+          </div>
+          <h4>W3Schools CSS</h4>
+          <p>Tutorial paso a paso con editor interactivo para practicar en linea.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://web.dev/learn/css" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Curso</span>
+          </div>
+          <h4>web.dev CSS</h4>
+          <p>Curso moderno de CSS por Google. Desde basics hasta topics avanzados.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://100dayscss.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-calendar-check"></i>
+            <span class="resource-tag">Desafio</span>
+          </div>
+          <h4>100 Days CSS</h4>
+          <p>Desafio diario de CSS. Practica creando animaciones y layouts creativos.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.cssscript.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Snippets</span>
+          </div>
+          <h4>CSS Script</h4>
+          <p>Coleccion de plugins y snippets CSS puros. Animaciones, layouts y componentes.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.markdownguide.org/basic-syntax/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-filetype-md"></i>
+            <span class="resource-tag">Syntax</span>
+          </div>
+          <h4>Markdown Guide</h4>
+          <p>Guia completa de Markdown. Sintaxis basica y avanzada para documentacion.</p>
+          <span class="resource-link">Ir a la guia <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Flexbox & Grid -->
+    <div class="resource-category">
+      <h3><i class="bi bi-arrows-fullscreen" style="color:#6c5ce7"></i> Flexbox & Grid</h3>
+      <div class="resource-grid">
+        <a href="https://flexboxfroggy.com/#es" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>Flexbox Froggy</h4>
+          <p>Aprende Flexbox jugando. Mueve las ranas a sus lilis usando propiedades flex.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://cssgridgarden.com/#es" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>CSS Grid Garden</h4>
+          <p>Aprende CSS Grid regando tu jardin. Ejercicios interactivos paso a paso.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.flexboxdefense.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>Flexbox Defense</h4>
+          <p>Tower defense donde ubicas torres usando flexbox. Divertido y educativo.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://flexboxzombies.com/p/flexbox-zombies" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>Flexbox Zombies</h4>
+          <p>Aprende flexbox rescatando zombies. 10 niveles de dificultad progresiva.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Guia Visual</span>
+          </div>
+          <h4>Guia Visual Flexbox</h4>
+          <p>La guia visual mas completa de Flexbox. Referencia rapida con imagenes.</p>
+          <span class="resource-link">Ir a la guia <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://gridbyexample.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Ejemplos</span>
+          </div>
+          <h4>Grid by Example</h4>
+          <p>Coleccion de ejemplos practicos de CSS Grid. Patrones de layout reales y videos.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://grid.malven.co/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-bookmark"></i>
+            <span class="resource-tag">Cheatsheet</span>
+          </div>
+          <h4>Grid Cheatsheet (Malven)</h4>
+          <p>Cheatsheet visual de CSS Grid. Referencia interactiva de todas las propiedades.</p>
+          <span class="resource-link">Ver cheatsheet <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Generadores & Playgrounds -->
+    <div class="resource-category">
+      <h3><i class="bi bi-easel2-fill" style="color:#fd79a8"></i> Generadores & Playgrounds</h3>
+      <div class="resource-grid">
+        <a href="https://www.flexboxlabs.com/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Laboratorio</span>
+          </div>
+          <h4>Flexbox Labs</h4>
+          <p>Explora todas las propiedades de flexbox en un playground interactivo con preview en tiempo real.</p>
+          <span class="resource-link">Ir al lab <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://flexbox.help/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-search"></i>
+            <span class="resource-tag">Herramienta</span>
+          </div>
+          <h4>Flexbox Help</h4>
+          <p>Visualizador rapido de flexbox. Selecciona propiedades y ve el resultado al instante.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://the-echoplex.net/flexyboxes/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>FlexyBoxes</h4>
+          <p>Generador interactivo de flexbox. Configura propiedades y genera el CSS al instante.</p>
+          <span class="resource-link">Ir al generador <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://demo.agektmr.com/flexbox/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-search"></i>
+            <span class="resource-tag">Visualizador</span>
+          </div>
+          <h4>Flexbox Tester</h4>
+          <p>Herramienta de Google para visualizar como funcionan las propiedades de flexbox.</p>
+          <span class="resource-link">Ir al tester <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://codepen.io/collection/XqRLMb" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Ejemplos</span>
+          </div>
+          <h4>Flexbox CodePens</h4>
+          <p>Coleccion curada de CodePens con ejemplos creativos de flexbox para inspirarte.</p>
+          <span class="resource-link">Ver ejemplos <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://flexbox.malven.co/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-bookmark"></i>
+            <span class="resource-tag">Cheatsheet</span>
+          </div>
+          <h4>Flexbox Cheatsheet (Malven)</h4>
+          <p>Cheatsheet visual interactivo de flexbox. Pasa el mouse sobre cada propiedad para ver como funciona.</p>
+          <span class="resource-link">Ver cheatsheet <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.grabthiscode.com/tools/css-grid-generator/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>CSS Grid Generator</h4>
+          <p>Generador visual de CSS Grid. Define columnas y filas con el mouse y exporta el CSS.</p>
+          <span class="resource-link">Ir al generador <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://cssgridynth.playground/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Playground</span>
+          </div>
+          <h4>Grid Playground</h4>
+          <p>Editor visual de CSS Grid. Crea layouts y exporta el codigo al instante.</p>
+          <span class="resource-link">Ir al playground <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://cssgrid.architect/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>CSS Grid Architect</h4>
+          <p>Disea layouts grid visualmente. Arrastra, redimensiona y exporta el CSS.</p>
+          <span class="resource-link">Ir al editor <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://layoutit.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>Layoutit Grid</h4>
+          <p>Generador de layouts con Grid y Flexbox. Interfaz drag & drop para crear layouts rapidos.</p>
+          <span class="resource-link">Ir al generador <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://every-layout.dev/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Laboratorio</span>
+          </div>
+          <h4>Every Layout</h4>
+          <p>Patrones de layout reutilizables con CSS puro. Stack, Sidebar, Switcher, Repel y mas.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://layout.bradwoods.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>CSS Layout Generator</h4>
+          <p>Generador interactivo de layouts CSS. Flexbox y Grid con preview en tiempo real.</p>
+          <span class="resource-link">Ir al generador <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Tutorial</span>
+          </div>
+          <h4>Interactive Guide to Flexbox</h4>
+          <p>Tutorial visual interactivo de Flexbox por Josh Comeo. Aprende haciendo en cada paso.</p>
+          <span class="resource-link">Ir al tutorial <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.joshwcomeau.com/css/interactive-guide-to-grid/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Tutorial</span>
+          </div>
+          <h4>Interactive Guide to Grid</h4>
+          <p>Tutorial visual interactivo de CSS Grid por Josh Comeo. Explicaciones con animaciones.</p>
+          <span class="resource-link">Ir al tutorial <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://codepen.io/pen/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Editor</span>
+          </div>
+          <h4>CodePen Playground</h4>
+          <p>Editor en vivo para HTML, CSS y JS. Prueba ideas de flexbox/grid al instante sin configurar nada.</p>
+          <span class="resource-link">Ir al editor <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://play.tailwindcss.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Playground</span>
+          </div>
+          <h4>Tailwind Play</h4>
+          <p>Playground oficial de Tailwind CSS. Incluye utilidades de flexbox y grid en vivo.</p>
+          <span class="resource-link">Ir al playground <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.css-gradient.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>CSS Gradient Generator</h4>
+          <p>Crea gradientes CSS visualmente. Combina con grid para backgrounds impactantes.</p>
+          <span class="resource-link">Ir al generador <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://transform.tools/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Generador</span>
+          </div>
+          <h4>CSS Transform Playground</h4>
+          <p>Generador visual de transforms y transitions. Aplica a elementos flex/grid en vivo.</p>
+          <span class="resource-link">Ir al playground <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Herramientas CSS Interactivas -->
+    <div class="resource-category">
+      <h3><i class="bi bi-tools" style="color:#a29bfe"></i> Herramientas CSS Interactivas</h3>
+      <div class="resource-grid">
+        <a href="https://flukeout.github.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>CSS Diner</h4>
+          <p>Aprende selectores CSS jugando. 32 niveles para dominar selectores de principio a fin.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://codepen.io/pen/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Editor</span>
+          </div>
+          <h4>CodePen Playground</h4>
+          <p>Editor en vivo para HTML, CSS y JS. Prueba ideas al instante sin configurar nada.</p>
+          <span class="resource-link">Ir al editor <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.w3schools.com/howto/howto_css_login_form.asp" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-laptop"></i>
+            <span class="resource-tag">Templates</span>
+          </div>
+          <h4>W3Schools How To</h4>
+          <p>Cientos de snippets de CSS listos para usar. Modales, forms, navbars, tabs y mas.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.bypeople.com/snippets/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-collection"></i>
+            <span class="resource-tag">Snippets</span>
+          </div>
+          <h4>ByPeople Snippets</h4>
+          <p>Coleccion de snippets CSS y JS. Modales, sliders, tooltips y componentes varios.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://ui.shadcn.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-box"></i>
+            <span class="resource-tag">UI Kit</span>
+          </div>
+          <h4>shadcn/ui</h4>
+          <p>Componentes UI copiables para React. Basados en Radix y Tailwind, gratis y open source.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://tailwindcomponents.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-collection"></i>
+            <span class="resource-tag">Componentes</span>
+          </div>
+          <h4>Tailwind Components</h4>
+          <p>Miles de componentes gratuitos hechos con Tailwind CSS. Cards, forms, navbars y mas.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://m3.material.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-brush"></i>
+            <span class="resource-tag">Design System</span>
+          </div>
+          <h4>Material Design 3</h4>
+          <p>Guia oficial de Material Design por Google. Fundamentos de diseno y componentes.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.bulma.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-box"></i>
+            <span class="resource-tag">Framework</span>
+          </div>
+          <h4>Bulma CSS</h4>
+          <p>Framework CSS moderno y ligero. Basado en Flexbox, sin JavaScript, muy facil de aprender.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="resource-category">
+      <h3><i class="bi bi-filetype-js" style="color:#f7df1e"></i> JavaScript</h3>
+      <div class="resource-grid">
+        <a href="https://developer.mozilla.org/es/docs/Web/JavaScript" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Documentacion</span>
+          </div>
+          <h4>MDN JavaScript</h4>
+          <p>La referencia oficial de JavaScript. Conceptos, APIs y ejemplos detallados.</p>
+          <span class="resource-link">Ir a MDN <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://javascript.info/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Curso</span>
+          </div>
+          <h4>JavaScript.info</h4>
+          <p>El curso moderno de JS. Desde basics hasta async, prototypes y mas.</p>
+          <span class="resource-link">Ir al curso <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://eloquentjavascript.net/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Libro</span>
+          </div>
+          <h4>Eloquent JavaScript</h4>
+          <p>Libro gratuito online. Programacion en JS desde cero con ejercicios.</p>
+          <span class="resource-link">Leer gratis <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://playcode.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-play-circle"></i>
+            <span class="resource-tag">Editor</span>
+          </div>
+          <h4>PlayCode</h4>
+          <p>Editor online con output en tiempo real. Practica JS en el navegador.</p>
+          <span class="resource-link">Ir al editor <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.codecademy.com/learn/learn-javascript" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Curso</span>
+          </div>
+          <h4>Codecademy JS</h4>
+          <p>Curso interactivo de JavaScript. Aprende haciendo con ejercicios en linea.</p>
+          <span class="resource-link">Ir al curso <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://30seconds.dev/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-lightning"></i>
+            <span class="resource-tag">Snippets</span>
+          </div>
+          <h4>30 Seconds of Code</h4>
+          <p>Snippets de JS, CSS y HTML explicados en 30 segundos. Referencia rapida.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://vanillajstoolkit.com/primitives/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-collection"></i>
+            <span class="resource-tag">Primitivas</span>
+          </div>
+          <h4>Vanilla JS Toolkit</h4>
+          <p>Primitivas de JavaScript vanilla. Reemplazos nativos de jQuery y utilidades comunes.</p>
+          <span class="resource-link">Ir al toolkit <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://youmightnotneedjquery.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-x-circle"></i>
+            <span class="resource-tag">Alternativas</span>
+          </div>
+          <h4>You Might Not Need jQuery</h4>
+          <p>Equivalentes vanilla JS de las funciones de jQuery. Compatibilidad por navegador.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.typescriptlang.org/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Types</span>
+          </div>
+          <h4>TypeScript</h4>
+          <p>Superset de JavaScript con tipos estaticos. Documentacion oficial y playground online.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Practica y Desafios -->
+    <div class="resource-category">
+      <h3><i class="bi bi-lightning-charge-fill" style="color:#fdcb6e"></i> Practica & Desafios</h3>
+      <div class="resource-grid">
+        <a href="https://www.frontendmentor.io/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-award"></i>
+            <span class="resource-tag">Desafios</span>
+          </div>
+          <h4>Frontend Mentor</h4>
+          <p>Desafios reales de frontend con diseos profesionales. Desde beginner hasta advanced.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.freecodecamp.org/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Curso Completo</span>
+          </div>
+          <h4>freeCodeCamp</h4>
+          <p>Cursos completos y gratuitos. HTML, CSS, JS, React, y mas con certificaciones.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://exercism.org/tracks/javascript" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Ejercicios</span>
+          </div>
+          <h4>Exercism JS</h4>
+          <p>Ejercicios de JavaScript con mentorship gratuita. Recibe feedback de mentores.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.codewars.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Katas</span>
+          </div>
+          <h4>Codewars</h4>
+          <p>Resuelve katas (retos) de programacion. Compite y sube de rango.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://hackernoon.com/tagged/javascript" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-newspaper"></i>
+            <span class="resource-tag">Blog</span>
+          </div>
+          <h4>HackerNoon</h4>
+          <p>Articulos de la comunidad sobre JS, CSS, frameworks y tendencias.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://dev.to/t/javascript" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-people"></i>
+            <span class="resource-tag">Comunidad</span>
+          </div>
+          <h4>DEV Community</h4>
+          <p>Comunidad de desarrolladores. Articulos, tutoriales y discusiones diarias.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://roadmap.sh/frontend" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-map"></i>
+            <span class="resource-tag">Roadmap</span>
+          </div>
+          <h4>Frontend Roadmap</h4>
+          <p>Mapa de ruta completo para aprender frontend. Paso a paso desde cero hasta senior.</p>
+          <span class="resource-link">Ver roadmap <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.theodinproject.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-mortarboard"></i>
+            <span class="resource-tag">Curso</span>
+          </div>
+          <h4>The Odin Project</h4>
+          <p>Curso fullstack completo y gratuito. HTML, CSS, JS, Ruby on Rails y mas.</p>
+          <span class="resource-link">Ir al curso <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://javascript30.com/" target="_blank" class="resource-card featured">
+          <div class="resource-card-header">
+            <i class="bi bi-calendar-check"></i>
+            <span class="resource-tag">Desafio 30 dias</span>
+          </div>
+          <h4>JavaScript30</h4>
+          <p>30 retos de JavaScript vanilla en 30 dias por Wes Bos. Sin frameworks, puro JS.</p>
+          <span class="resource-link">Empezar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.codewell.cc/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-award"></i>
+            <span class="resource-tag">Desafios</span>
+          </div>
+          <h4>Codewell</h4>
+          <p>Desafios de frontend con diseos profesionales. Practica HTML, CSS y JavaScript.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://cssbattle.dev/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Batalla</span>
+          </div>
+          <h4>CSS Battle</h4>
+          <p>Competencia de CSS. Replica shapes con el menor CSS posible. Top 1% es genial.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://neal.fun/css-grid/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-controller"></i>
+            <span class="resource-tag">Juego</span>
+          </div>
+          <h4>Grid Critters</h4>
+          <p>Juego de CSS Grid. Resuelve niveles usando propiedades grid para avanzar.</p>
+          <span class="resource-link">Jugar ahora <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Herramientas de Diseno -->
+    <div class="resource-category">
+      <h3><i class="bi bi-palette-fill" style="color:#fd79a8"></i> Herramientas de Diseno</h3>
+      <div class="resource-grid">
+        <a href="https://coolors.co/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-palette"></i>
+            <span class="resource-tag">Colores</span>
+          </div>
+          <h4>Coolors</h4>
+          <p>Generador de paletas de colores. Crea y exporta paletas armonicas.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://fonts.google.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-fonts"></i>
+            <span class="resource-tag">Fuentes</span>
+          </div>
+          <h4>Google Fonts</h4>
+          <p>Miles de fuentes gratuitas para usar en tus proyectos web.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://unsplash.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-image"></i>
+            <span class="resource-tag">Fotos</span>
+          </div>
+          <h4>Unsplash</h4>
+          <p>Fotos de alta calidad y gratuitas para proyectos web y personales.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://iconscout.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-hurricane"></i>
+            <span class="resource-tag">Iconos</span>
+          </div>
+          <h4>IconScout</h4>
+          <p>Iconos, ilustraciones y fotos gratuitas para tus interfaces.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.figma.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-brush"></i>
+            <span class="resource-tag">Diseno</span>
+          </div>
+          <h4>Figma</h4>
+          <p>Herramienta de diseno en linea. Gratis para uso personal con planes edu.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://undraw.co/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-brush"></i>
+            <span class="resource-tag">Ilustraciones</span>
+          </div>
+          <h4>unDraw</h4>
+          <p>Ilustraciones SVG open source. Personaliza el color y descarga gratis.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.humaaans.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-people"></i>
+            <span class="resource-tag">Ilustraciones</span>
+          </div>
+          <h4>Humaaans</h4>
+          <p>Biblioteca de ilustraciones de personas. Mix and match poses y accesorios.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.svgbackgrounds.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-image"></i>
+            <span class="resource-tag">Fondos</span>
+          </div>
+          <h4>SVG Backgrounds</h4>
+          <p>Fondos SVG personalizables para tus proyectos. Patrones y texturas gratis.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://colorhunt.co/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-palette"></i>
+            <span class="resource-tag">Colores</span>
+          </div>
+          <h4>Color Hunt</h4>
+          <p>Paletas de colores curadas por la comunidad. Descubre combinaciones trending.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://www.imageoptimizer.net/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-image"></i>
+            <span class="resource-tag">Optimizacion</span>
+          </div>
+          <h4>Image Optimizer</h4>
+          <p>Optimiza imagenes online gratis. Reduce tamano sin perder calidad.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Referencia Rapida -->
+    <div class="resource-category">
+      <h3><i class="bi bi-clipboard-data-fill" style="color:#00cec9"></i> Referencia Rapida</h3>
+      <div class="resource-grid">
+        <a href="https://caniuse.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-browser-chrome"></i>
+            <span class="resource-tag">Compatibilidad</span>
+          </div>
+          <h4>Can I Use</h4>
+          <p>Comprueba la compatibilidad de APIs y CSS en todos los navegadores.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://developer.chrome.com/docs/devtools/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">DevTools</span>
+          </div>
+          <h4>Chrome DevTools</h4>
+          <p>Aprende a usar las DevTools de Chrome. Inspecciona, depura y optimiza.</p>
+          <span class="resource-link">Ir a la guia <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://cssgradient.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-tools"></i>
+            <span class="resource-tag">Herramienta</span>
+          </div>
+          <h4>CSS Gradient Generator</h4>
+          <p>Crea gradientes CSS visualmente y exporta el codigo listo para usar.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://animate.style/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-magic"></i>
+            <span class="resource-tag">Animaciones</span>
+          </div>
+          <h4>Animate.css</h4>
+          <p>Biblioteca de animaciones CSS listas para usar. Solo agrega la clase.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://github.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-git"></i>
+            <span class="resource-tag">Codigo</span>
+          </div>
+          <h4>GitHub</h4>
+          <p>Hospeda tus proyectos. Explora repositorios open source para aprender.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://codepen.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-code-slash"></i>
+            <span class="resource-tag">Playground</span>
+          </div>
+          <h4>CodePen</h4>
+          <p>Editor online para HTML, CSS y JS. Comparte y descubre demos increibles.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://css-tricks.com/snippets/css/a-guide-to-css-initial-values/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-book"></i>
+            <span class="resource-tag">Referencia</span>
+          </div>
+          <h4>CSS Initial Values</h4>
+          <p>Tabla completa de valores iniciales de todas las propiedades CSS. Referencia esencial.</p>
+          <span class="resource-link">Ir a la guia <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://responsively.app/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-phone"></i>
+            <span class="resource-tag">Responsive</span>
+          </div>
+          <h4>Responsively</h4>
+          <p>Herramienta de desarrollo responsive. Vista previa en multiples dispositivos a la vez.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://pagespeed.web.dev/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-speedometer2"></i>
+            <span class="resource-tag">Performance</span>
+          </div>
+          <h4>PageSpeed Insights</h4>
+          <p>Mide la velocidad de tu web. Analisis de Core Web Vitals y sugerencias de mejora.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://bundlephobia.com/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-box"></i>
+            <span class="resource-tag">NPM</span>
+          </div>
+          <h4>Bundlephobia</h4>
+          <p>Encuentra el tamano de cualquier paquete npm. Antes de instalar, mira el peso.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a href="https://devhints.io/" target="_blank" class="resource-card">
+          <div class="resource-card-header">
+            <i class="bi bi-file-earmark-text"></i>
+            <span class="resource-tag">Cheat Sheets</span>
+          </div>
+          <h4>Rico Sta. Cruz Hints</h4>
+          <p>Cheat sheets de CSS, bash, vim, regex y mas. Referencia rapida para todo.</p>
+          <span class="resource-link">Ir al sitio <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Construido para aprender. Modifica, experimenta y domina Flexbox & Grid.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/playground.js"></script>
+  <script src="../assets/js/babylon-scene.js"></script>
+  <script src="../assets/js/animations.js"></script>
+</body>
+</html>

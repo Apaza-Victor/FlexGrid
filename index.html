@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox & Grid - Guia Interactiva</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <i class="bi bi-code-square"></i>
+        FlexGrid
+      </a>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html" class="active"><i class="bi bi-house-fill"></i> Inicio</a></li>
+        <li><a href="pages/flexbox.html"><i class="bi bi-arrows-expand"></i> Flexbox</a></li>
+        <li><a href="pages/grid.html"><i class="bi bi-grid-3x3-gap"></i> Grid</a></li>
+        <li><a href="pages/patrones.html"><i class="bi bi-layout-wtf"></i> Patrones</a></li>
+        <li><a href="pages/conceptos.html"><i class="bi bi-journal-bookmark-fill"></i> Conceptos</a></li>
+        <li><a href="pages/recursos.html"><i class="bi bi-bookmark-star-fill"></i> Recursos</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+        <button class="navbar-toggle" id="navToggle">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero-home">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="bi bi-lightning-charge-fill"></i>
+        Guia Interactiva - Aprende Practicando
+      </div>
+      <h1>Flexbox & Grid</h1>
+      <p>Modifica las propiedades en tiempo real y ve como cambia el layout. Copia el codigo listo para usar.</p>
+    </div>
+  </section>
+
+  <!-- Section Cards -->
+  <div class="container">
+    <div class="section-cards">
+
+      <a href="pages/flexbox.html" class="section-card">
+        <div class="section-card-icon flex-icon">
+          <i class="bi bi-arrows-expand"></i>
+        </div>
+        <h3>Flexbox</h3>
+        <p>Domina el layout unidimensional. Alinea, distribuye y ordena items en una fila o columna con flex-direction, justify-content, align-items y mas.</p>
+        <span class="section-card-link">
+          Abrir Playground <i class="bi bi-arrow-right"></i>
+        </span>
+      </a>
+
+      <a href="pages/grid.html" class="section-card">
+        <div class="section-card-icon grid-icon">
+          <i class="bi bi-grid-3x3-gap"></i>
+        </div>
+        <h3>CSS Grid</h3>
+        <p>Construye layouts bidimensionales complejos. Define columnas, filas, areas y alinea items en dos ejes simultaneamente.</p>
+        <span class="section-card-link">
+          Abrir Playground <i class="bi bi-arrow-right"></i>
+        </span>
+      </a>
+
+      <a href="pages/recursos.html" class="section-card">
+        <div class="section-card-icon recursos-icon">
+          <i class="bi bi-bookmark-star-fill"></i>
+        </div>
+        <h3>Recursos</h3>
+        <p>Links gratis para aprender y practicar. Tutoriales, herramientas interactivas, documentacion y comunidades.</p>
+        <span class="section-card-link">
+          Ver Recursos <i class="bi bi-arrow-right"></i>
+        </span>
+      </a>
+
+      <a href="pages/patrones.html" class="section-card">
+        <div class="section-card-icon patrones-icon">
+          <i class="bi bi-layout-wtf"></i>
+        </div>
+        <h3>Patrones de Layout</h3>
+        <p>10 patrones reales: Holy Grail, sidebar, cards responsive, navbar, sticky footer, gallery, pricing, breadcrumb y mas.</p>
+        <span class="section-card-link">
+          Ver Patrones <i class="bi bi-arrow-right"></i>
+        </span>
+      </a>
+
+      <a href="pages/conceptos.html" class="section-card">
+        <div class="section-card-icon conceptos-icon">
+          <i class="bi bi-journal-bookmark-fill"></i>
+        </div>
+        <h3>Conceptos CSS</h3>
+        <p>Box Model, display, position, especificidad, unidades, selectores, media queries y variables CSS. La base para todo.</p>
+        <span class="section-card-link">
+          Ver Conceptos <i class="bi bi-arrow-right"></i>
+        </span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Three.js Canvas -->
+  <canvas id="heroCanvas"></canvas>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Construido para aprender. Modifica, experimenta y domina Flexbox & Grid.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/playground.js"></script>
+  <script src="assets/js/three-hero.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>
