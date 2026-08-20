@@ -1,6 +1,13 @@
 # FlexGrid - Guia Interactiva de CSS Flexbox & Grid
 
+[![GitHub Pages](https://img.shields.io/badge/Demo-Online-brightgreen)](https://apaza-victor.github.io/FlexGrid/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/es/docs/Web/JavaScript)
+
 Sitio web educativo interactivo para aprender CSS Flexbox y Grid desde cero. Incluye playgrounds en tiempo real, patrones de layout, conceptos fundamentales y mas de 80 recursos gratuitos organizados en 8 categorias.
+
+**Demo en vivo:** https://apaza-victor.github.io/FlexGrid/
 
 ## Estructura del Proyecto
 
@@ -110,7 +117,7 @@ Playground interactivo con controles para `grid-template-columns`, `grid-templat
 
 ## Como Usar
 
-1. Abre `index.html` en tu navegador
+1. Visita la [demo en vivo](https://apaza-victor.github.io/FlexGrid/) o abre `index.html` en tu navegador
 2. Navega por las secciones usando la barra de navegacion
 3. En Flexbox/Grid: modifica propiedades y ve los cambios al instante
 4. Haz click en los items del playground para editarlos individualmente
